@@ -3,6 +3,8 @@
 ## Requests Name
 
 ```
+########## Guest url's start ##########
+
 Get exploer stories list
 Get single story
 Get selected products by category
@@ -19,7 +21,25 @@ Signin confirmation
 Signout
 Location search
 Content search
+Get Business information
+Get Business products
+
+########## Guest url's end ##########
+
+
+
+########## Authuenticated url's start ##########
+
+Get user unread notifications
+Get profile products
+Get profile information
+Update profile/logo image
+
+########## Authuenticated url's end ##########
+
 ```
+
+## Guest url's:
 
 ### Get exploer stories list
 
@@ -1079,6 +1099,407 @@ Successfuly:
 Error:
 {
     status: (206/403/404)
+    error: <message>
+}
+```
+
+### Get business information
+
+###### url:
+
+```
+/business/single
+```
+
+###### method:
+
+** GET **
+
+###### header:
+
+```
+(string) token <required>
+(string) username <required>
+(string) password <required>
+(string) device_token <nullable>
+```
+
+###### request entries:
+
+```
+(string) slug <required>
+```
+
+###### notic:
+
+###### response items:
+
+```
+(number) status
+(string) error
+(array) data
+```
+
+###### response example:
+
+```
+Successfuly:
+{
+    status: 200,
+    data: [
+       "id": <number>,
+        "slug": <string>,
+        "logo": <link>,
+        "name": <string>,
+        "activity_issue": <text>,
+        "person_type": <string>,
+        "product_len": <number>,
+        "followers_len": <number>,
+        "followings_len": <number>
+    ],
+}
+
+Error:
+{
+    status: (206/400/403/404)
+    error: <message>
+}
+```
+
+### Get business products
+
+###### url:
+
+```
+/products/business
+```
+
+###### method:
+
+** GET **
+
+###### header:
+
+```
+(string) token <required>
+(string) username <required>
+(string) password <required>
+(string) device_token <nullable>
+```
+
+###### request entries:
+
+```
+(number) page <required>
+(number) id <required>
+```
+
+###### notic:
+
+###### response items:
+
+```
+(number) status
+(string) error
+(array) data
+(number) page
+(boolean) has_more
+```
+
+###### response example:
+
+```
+Successfuly:
+{
+    status: 200,
+    data: [
+        "id": <number>,
+        "name": <string>,
+        "price": <number, nullable>,
+        "person_type": <string>,
+        "country": <string>,
+        "state": <string>,
+        "city": <string>,
+        "view": <number>,
+        "created_at": <date>,
+        "author": <string>,
+        "image": <link>
+    ],
+    "page": <number>,
+    "has_more": <boolean>
+}
+
+Error:
+{
+    status: (206/400/403/404)
+    error: <message>
+}
+```
+
+## Authenticated url's:
+
+### Get user unread notifications
+
+###### url:
+
+```
+/notifications/get-unreaded
+```
+
+###### method:
+
+** GET **
+
+###### header:
+
+```
+(string) token <required>
+(string) username <required>
+(string) password <required>
+(string) authorization_token <required>
+```
+
+###### request entries:
+
+```
+none
+```
+
+###### notic:
+
+###### response items:
+
+```
+(number) status
+(string) error
+(array) data
+```
+
+###### response example:
+
+```
+Successfuly:
+{
+    status: 200,
+    data: [
+        {
+            'id' => <number>,
+            'send_type' => <string>,
+            'title' => <string>,
+            'content' => <text>,
+            'seen' => <boolean>,
+            'seen_at' => <date>,
+        },
+        {
+            'id' => <number>,
+            'send_type' => <string>,
+            'title' => <string>,
+            'content' => <text>,
+            'seen' => <boolean>,
+            'seen_at' => <date>,
+        },
+    ]
+}
+
+Error:
+{
+    status: (206/403/404)
+    error: <message>
+}
+```
+
+### Get profile products
+
+###### url:
+
+```
+/profile/products
+```
+
+###### method:
+
+** GET **
+
+###### header:
+
+```
+(string) token <required>
+(string) username <required>
+(string) password <required>
+(string) authorization_token <required>
+```
+
+###### request entries:
+
+```
+(number) page <required>
+```
+
+###### notic:
+
+###### response items:
+
+```
+(number) status
+(string) error
+(array) data
+(number) page
+(boolean) has_more
+```
+
+###### response example:
+
+```
+Successfuly:
+{
+    status: 200,
+    data: [
+        {
+            "id": <number>,
+            "name": <string>,
+            "price": <number, nullable>,
+            "person_type": <string>,
+            "country": <string>,
+            "state": <string>,
+            "city": <string>,
+            "view": <number>,
+            "created_at": <date>,
+            "image": <link>
+        },
+        {
+            "id": <number>,
+            "name": <string>,
+            "price": <number, nullable>,
+            "person_type": <string>,
+            "country": <string>,
+            "state": <string>,
+            "city": <string>,
+            "view": <number>,
+            "created_at": <date>,
+            "image": <link>
+        },
+    ]
+}
+
+Error:
+{
+    status: (206/400/403/404)
+    error: <message>
+}
+```
+
+### Get profile information
+
+###### url:
+
+```
+/profile
+```
+
+###### method:
+
+** GET **
+
+###### header:
+
+```
+(string) token <required>
+(string) username <required>
+(string) password <required>
+(string) authorization_token <required>
+```
+
+###### request entries:
+
+```
+none
+```
+
+###### notic:
+
+###### response items:
+
+```
+(number) status
+(string) error
+(array) data
+```
+
+###### response example:
+
+```
+Successfuly:
+{
+    status: 200,
+    data: [
+        "id": <number>,
+        "name": <string>,
+        "products_len": <number>,
+        "followers_len": <number>,
+        "followings_len": <number>,
+        "image": <number>,
+        "description": <number>
+        "webiste_link" : <link, nullable>
+    ]
+}
+
+Error:
+{
+    status: (206/403/404)
+    error: <message>
+}
+```
+
+### Update profile/logo image
+
+###### url:
+
+```
+/profile/updateProfileImage
+```
+
+###### method:
+
+** POST **
+
+###### header:
+
+```
+(string) token <required>
+(string) username <required>
+(string) password <required>
+(string) authorization_token <required>
+```
+
+###### request entries:
+
+```
+(file) image
+```
+
+###### notic:
+
+###### response items:
+
+```
+(number) status
+(string) error
+(array) data
+```
+
+###### response example:
+
+```
+Successfuly:
+{
+    status: 202,
+    path: <link>
+
+}
+
+Error:
+{
+    status: (206/400/403/406/500)
     error: <message>
 }
 ```
