@@ -34,6 +34,20 @@ Get user unread notifications
 Get profile products
 Get profile information
 Update profile/logo image
+Check user business
+Get followers
+Get followings
+Get business products
+Get user marks
+Start following
+Unfollow
+Product mark
+Product unmark
+Business mark
+Business unmark
+Get user wallet credit
+Get user business products list
+Get user stories list
 
 ########## Authuenticated url's end ##########
 
@@ -1148,6 +1162,7 @@ Successfuly:
     status: 200,
     data: [
        "id": <number>,
+       "user_id": <number>,
         "slug": <string>,
         "logo": <link>,
         "name": <string>,
@@ -1243,7 +1258,7 @@ Error:
 ###### url:
 
 ```
-/notifications/get-unreaded
+dashboard/notifications/get-unreaded
 ```
 
 ###### method:
@@ -1313,7 +1328,7 @@ Error:
 ###### url:
 
 ```
-/profile/products
+dashboard/profile/products
 ```
 
 ###### method:
@@ -1393,7 +1408,7 @@ Error:
 ###### url:
 
 ```
-/profile
+dashboard/profile
 ```
 
 ###### method:
@@ -1455,7 +1470,7 @@ Error:
 ###### url:
 
 ```
-/profile/updateProfileImage
+dashboard/profile/updateProfileImage
 ```
 
 ###### method:
@@ -1500,6 +1515,857 @@ Successfuly:
 Error:
 {
     status: (206/400/403/406/500)
+    error: <message>
+}
+```
+
+### Check user business
+
+###### url:
+
+```
+dashboard/user/check-business
+```
+
+###### method:
+
+** GET **
+
+###### header:
+
+```
+(string) token <required>
+(string) username <required>
+(string) password <required>
+(string) authorization_token <required>
+```
+
+###### request entries:
+
+```
+none
+```
+
+###### notic:
+
+###### response items:
+
+```
+(number) status
+(string) error
+(array) data
+```
+
+###### response example:
+
+```
+Successfuly:
+{
+    status: 200,
+    "data": {
+        "has_business": <boolean>, // step 1
+        "has_confimed_settings": <boolean>, // step 2
+        "has_compilite_setting": <boolean> // step 3
+    }
+}
+
+Error:
+{
+    status: (206/403/404)
+    error: <message>
+}
+```
+
+### Get followers
+
+###### url:
+
+```
+dashboard/follow/followers
+```
+
+###### method:
+
+** GET **
+
+###### header:
+
+```
+(string) token <required>
+(string) username <required>
+(string) password <required>
+(string) authorization_token <required>
+```
+
+###### request entries:
+
+```
+(number) page <required>
+```
+
+###### notic:
+
+###### response items:
+
+```
+(number) status
+(string) error
+(array) data
+(number) page
+(boolean) has_more
+```
+
+###### response example:
+
+```
+Successfuly:
+{
+    status: 200,
+    data: [
+        {
+            'is_business' => <boolean>,
+            'id' => <number>,
+            'name' => <string>,
+            'slug' => <string>,
+            'person_type' => <string>,
+            'image' => <link>,
+            'type' => <string>,
+        },
+        {
+            'is_business' => <boolean>,
+            'id' => <number>,
+            'name' => <string>,
+            'slug' => <string>,
+            'person_type' => <string>,
+            'image' => <link>,
+            'type' => <string>,
+        },
+    ]
+}
+
+Error:
+{
+    status: (206/400/403/404)
+    error: <message>
+}
+```
+
+### Get followings
+
+###### url:
+
+```
+dashboard/follow/followings
+```
+
+###### method:
+
+** GET **
+
+###### header:
+
+```
+(string) token <required>
+(string) username <required>
+(string) password <required>
+(string) authorization_token <required>
+```
+
+###### request entries:
+
+```
+(number) page <required>
+```
+
+###### notic:
+
+###### response items:
+
+```
+(number) status
+(string) error
+(array) data
+(number) page
+(boolean) has_more
+```
+
+###### response example:
+
+```
+Successfuly:
+{
+    status: 200,
+    data: [
+        {
+            'is_business' => <boolean>,
+            'id' => <number>,
+            'name' => <string>,
+            'slug' => <string>,
+            'person_type' => <string>,
+            'image' => <link>,
+            'type' => <string>,
+        },
+        {
+            'is_business' => <boolean>,
+            'id' => <number>,
+            'name' => <string>,
+            'slug' => <string>,
+            'person_type' => <string>,
+            'image' => <link>,
+            'type' => <string>,
+        },
+    ]
+}
+
+Error:
+{
+    status: (206/400/403/404)
+    error: <message>
+}
+```
+
+### Get business products
+
+###### url:
+
+```
+dashboard/follow/followings
+```
+
+###### method:
+
+** GET **
+
+###### header:
+
+```
+(string) token <required>
+(string) username <required>
+(string) password <required>
+(string) authorization_token <required>
+```
+
+###### request entries:
+
+```
+(number) page <required>
+(number) id <required> (business_id)
+```
+
+###### notic:
+
+###### response items:
+
+```
+(number) status
+(string) error
+(array) data
+(number) page
+(boolean) has_more
+```
+
+###### response example:
+
+```
+Successfuly:
+{
+    status: 200,
+    data: [
+        {
+            "id": <number>,
+            "name": <string>,
+            "price": <number, nullable>,
+            "person_type": <string>,
+            "country": <string>,
+            "state": <string>,
+            "city": <string>,
+            "view": <numberstring>,
+            "created_at": <date>,
+            "author": <string>,
+            "image": <link>
+        },
+        {
+            "id": <number>,
+            "name": <string>,
+            "price": <number, nullable>,
+            "person_type": <string>,
+            "country": <string>,
+            "state": <string>,
+            "city": <string>,
+            "view": <numberstring>,
+            "created_at": <date>,
+            "author": <string>,
+            "image": <link>
+        },
+    ]
+}
+
+Error:
+{
+    status: (206/400/401/403)
+    error: <message>
+}
+```
+
+### Get user marks
+
+###### url:
+
+```
+dashboard/mark/marks
+```
+
+###### method:
+
+** GET **
+
+###### header:
+
+```
+(string) token <required>
+(string) username <required>
+(string) password <required>
+(string) authorization_token <required>
+```
+
+###### request entries:
+
+```
+(number) page <required>
+```
+
+###### notic:
+
+###### response items:
+
+```
+(number) status
+(string) error
+(array) data
+(number) page
+(boolean) has_more
+```
+
+###### response example:
+
+```
+Successfuly:
+{
+    status: 200,
+    data: [...]
+}
+
+Error:
+{
+    status: (206/400/401/403)
+    error: <message>
+}
+```
+
+### Start following
+
+###### url:
+
+```
+dashboard/follow/follow
+```
+
+###### method:
+
+** POST **
+
+###### header:
+
+```
+(string) token <required>
+(string) username <required>
+(string) password <required>
+(string) authorization_token <required>
+```
+
+###### request entries:
+
+```
+(number) id <required> (user_id)
+```
+
+###### notic:
+
+###### response items:
+
+```
+(number) status
+(string) error
+(string) message
+```
+
+###### response example:
+
+```
+Successfuly:
+{
+    status: 201,
+    message: <message>
+}
+
+Error:
+{
+    status: (202/206/400/403/404/500)
+    error: <message>
+}
+```
+
+### Unfollow
+
+###### url:
+
+```
+dashboard/follow/unfollow
+```
+
+###### method:
+
+** POST **
+
+###### header:
+
+```
+(string) token <required>
+(string) username <required>
+(string) password <required>
+(string) authorization_token <required>
+```
+
+###### request entries:
+
+```
+(number) id <required> (user_id)
+```
+
+###### notic:
+
+###### response items:
+
+```
+(number) status
+(string) error
+(string) message
+```
+
+###### response example:
+
+```
+Successfuly:
+{
+    status: 202,
+    message: <message>
+}
+
+Error:
+{
+    status: (206/400/403/404/500)
+    error: <message>
+}
+```
+
+### Product mark
+
+###### url:
+
+```
+dashboard/mark/product-mark
+```
+
+###### method:
+
+** POST **
+
+###### header:
+
+```
+(string) token <required>
+(string) username <required>
+(string) password <required>
+(string) authorization_token <required>
+```
+
+###### request entries:
+
+```
+(number) id <required> (product_id)
+```
+
+###### notic:
+
+###### response items:
+
+```
+(number) status
+(string) error
+(string) message
+```
+
+###### response example:
+
+```
+Successfuly:
+{
+    status: 201,
+    message: <message>
+}
+
+Error:
+{
+    status: (202/206/400/403/404/500)
+    error: <message>
+}
+```
+
+### Product unmark
+
+###### url:
+
+```
+dashboard/mark/product-unmark
+```
+
+###### method:
+
+** POST **
+
+###### header:
+
+```
+(string) token <required>
+(string) username <required>
+(string) password <required>
+(string) authorization_token <required>
+```
+
+###### request entries:
+
+```
+(number) id <required> (product_id)
+```
+
+###### notic:
+
+###### response items:
+
+```
+(number) status
+(string) error
+(string) message
+```
+
+###### response example:
+
+```
+Successfuly:
+{
+    status: 202,
+    message: <message>
+}
+
+Error:
+{
+    status: (206/400/403/404/500)
+    error: <message>
+}
+```
+
+### Business mark
+
+###### url:
+
+```
+dashboard/mark/business-mark
+```
+
+###### method:
+
+** POST **
+
+###### header:
+
+```
+(string) token <required>
+(string) username <required>
+(string) password <required>
+(string) authorization_token <required>
+```
+
+###### request entries:
+
+```
+(number) id <required> (business_id)
+```
+
+###### notic:
+
+###### response items:
+
+```
+(number) status
+(string) error
+(string) message
+```
+
+###### response example:
+
+```
+Successfuly:
+{
+    status: 201,
+    message: <message>
+}
+
+Error:
+{
+    status: (202/206/400/403/404/500)
+    error: <message>
+}
+```
+
+### Business unmark
+
+###### url:
+
+```
+dashboard/mark/business-unmark
+```
+
+###### method:
+
+** POST **
+
+###### header:
+
+```
+(string) token <required>
+(string) username <required>
+(string) password <required>
+(string) authorization_token <required>
+```
+
+###### request entries:
+
+```
+(number) id <required> (business_id)
+```
+
+###### notic:
+
+###### response items:
+
+```
+(number) status
+(string) error
+(string) message
+```
+
+###### response example:
+
+```
+Successfuly:
+{
+    status: 202,
+    message: <message>
+}
+
+Error:
+{
+    status: (206/400/403/404/500)
+    error: <message>
+}
+```
+
+### Get user wallet credit
+
+###### url:
+
+```
+dashboard/user/wallet-credit
+```
+
+###### method:
+
+** GET **
+
+###### header:
+
+```
+(string) token <required>
+(string) username <required>
+(string) password <required>
+(string) authorization_token <required>
+```
+
+###### request entries:
+
+```
+none
+```
+
+###### notic:
+
+###### response items:
+
+```
+(number) status
+(string) error
+(array) data
+```
+
+###### response example:
+
+```
+Successfuly:
+{
+    status: 200,
+    'credit': <string>
+}
+
+Error:
+{
+    status: (206/403/404)
+    error: <message>
+}
+```
+
+### Get user business products list
+
+###### url:
+
+```
+/dashboard/business/products
+```
+
+###### method:
+
+** GET **
+
+###### header:
+
+```
+(string) token <required>
+(string) username <required>
+(string) password <required>
+(string) device_token <required>
+```
+
+###### request entries:
+
+```
+(number) page <required>
+```
+
+###### notic:
+
+** The response.page is the next page. exam: you sent 1 and responsed 2 **
+
+###### response items:
+
+```
+(number) status
+(string) error
+(array) data
+(number) page
+(booloean) has_more
+```
+
+###### response example:
+
+```
+Successfuly:
+{
+    status: 200,
+    data: [
+        {
+            'id' => <id>,
+            'name' => <name>,
+            'price' => <price, nullable>,
+            'person_type' => <business person type>,
+            'country' => <country name>,
+            'state' => <state/province name>,
+            'city' => <city name>,
+            'view' => <view length>,
+            'created_at' => <created at data (by user local(jalali/gregorian))>,
+            'author' => <string>,
+            'image' => <image link>
+        }
+        page: <number>
+        has_more: <boolean>
+    ]
+}
+
+Error:
+{
+    status: (206/400/403/404)
+    error: <message>
+}
+```
+
+### Get user stories list
+
+###### url:
+
+```
+/dashboard/stories/list
+```
+
+###### method:
+
+** GET **
+
+###### header:
+
+```
+(string) token <required>
+(string) username <required>
+(string) password <required>
+(string) device_token <required>
+```
+
+###### request entries:
+
+```
+(number) page <required>
+```
+
+###### notic:
+
+** The response.page is the next page. exam: you sent 1 and responsed 2 **
+
+###### response items:
+
+```
+(number) status
+(string) error
+(array) data
+(number) page
+(booloean) has_more
+```
+
+###### response example:
+
+```
+Successfuly:
+{
+    status: 200,
+    data: [
+        {
+            'id' => <id>,
+            'content' => <link>
+        }
+        page: <number>
+        has_more: <boolean>
+    ]
+}
+
+Error:
+{
+    status: (206/400/403/404)
     error: <message>
 }
 ```
