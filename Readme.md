@@ -48,6 +48,15 @@ Business unmark
 Get user wallet credit
 Get user business products list
 Get user stories list
+Get user businesses list
+Get user businesses information
+Store user business
+update user business setting
+Get business addresses list
+Get business address
+Create business address
+Update business address
+Remove business address
 
 ########## Authuenticated url's end ##########
 
@@ -405,6 +414,7 @@ Error:
 (number) status
 (string) error
 (string) path
+(string) file_name
 ```
 
 ###### response example:
@@ -414,6 +424,7 @@ Successfuly:
 {
     status: 201,
     path: <link>
+    file_name: <string>
 }
 
 Error:
@@ -2491,6 +2502,428 @@ Successfuly:
 Error:
 {
     status: (206/400/403/404)
+    error: <message>
+}
+```
+
+### Store user business
+
+###### url:
+
+```
+/dashboard/business/store
+```
+
+###### method:
+
+** POST **
+
+###### header:
+
+```
+(string) token <required>
+(string) username <required>
+(string) password <required>
+(string) device_token <required>
+```
+
+###### request entries:
+
+```
+Real person
+
+(number) person_type <required> (1 is real, 2 is legall)
+(number) category <required> (category_id)
+(string) field <required>
+(string) name <required>
+(string) business_name <required>
+(string) business_ename <required>
+(number) phone <required>
+(number) citizen_id <required>
+(string) slug <required>
+(text) license_issue <required>
+(string) business_type <required>
+(number) country <required>
+(number) state <required>
+(number) city <required>
+
+
+Legall person sum with below parameters
+
+(string) national_id <nullable>
+(string) registration_code <nullable>
+```
+
+###### notic:
+
+** If user insert national_id, registration_code is nullable else, it is required **
+
+###### response items:
+
+```
+(number) status
+(string) error
+(string) message
+```
+
+###### response example:
+
+```
+Successfuly:
+{
+    status: 201,
+    'message': <string>
+}
+
+Error:
+{
+    status: (206/400/403/404/500)
+    error: <message>
+}
+```
+
+### update user business setting
+
+###### url:
+
+```
+/dashboard/business/update
+```
+
+###### method:
+
+** POST **
+
+###### header:
+
+```
+(string) token <required>
+(string) username <required>
+(string) password <required>
+(string) device_token <required>
+```
+
+###### request entries:
+
+```
+(number) id <required,number> (business id)
+(text) activity_issue <nullable,text>
+(email) email <nullable,email>
+(number) activity_year <nullable,number>
+(string) logo <nullable,string> (uploaded image name)
+(string) website <nullable,string>
+(string) google_map_link <nullable,string>
+```
+
+###### notic:
+
+** Id parameter is the business id **
+
+###### response items:
+
+```
+(number) status
+(string) error
+(string) message
+```
+
+###### response example:
+
+```
+Successfuly:
+{
+    status: 202,
+    'message': <string>
+}
+
+Error:
+{
+    status: (206/400/403/404)
+    error: <message>
+}
+```
+
+### Get business addresses list
+
+###### url:
+
+```
+/dashboard/addresses/list
+```
+
+###### method:
+
+** get **
+
+###### header:
+
+```
+(string) token <required>
+(string) username <required>
+(string) password <required>
+(string) device_token <required>
+```
+
+###### request entries:
+
+```
+(number) id <required,number> (business id)
+(number) page <required,number>
+```
+
+###### notic:
+
+###### response items:
+
+```
+(number) status
+(string) error
+(number) page
+(boolean) has_more
+```
+
+###### response example:
+
+```
+Successfuly:
+{
+    status: 200,
+    data: [
+        {...},
+        {...},
+        {...},
+    ]
+    'page': <number>
+    'has_more': <boolean>
+}
+
+Error:
+{
+    status: (206/400/403/404)
+    error: <message>
+}
+```
+
+### Get business address
+
+###### url:
+
+```
+/dashboard/addresses/address
+```
+
+###### method:
+
+** get **
+
+###### header:
+
+```
+(string) token <required>
+(string) username <required>
+(string) password <required>
+(string) device_token <required>
+```
+
+###### request entries:
+
+```
+(number) id <required,number> (address id)
+(number) business_id <required,number> (business id)
+(number) page <required,number>
+```
+
+###### notic:
+
+###### response items:
+
+```
+(number) status
+(string) error
+(array) data
+```
+
+###### response example:
+
+```
+Successfuly:
+{
+    status: 200,
+    data: [...]
+}
+
+Error:
+{
+    status: (206/400/403/404)
+    error: <message>
+}
+```
+
+### Create business address
+
+###### url:
+
+```
+/dashboard/addresses/create
+```
+
+###### method:
+
+** POST **
+
+###### header:
+
+```
+(string) token <required>
+(string) username <required>
+(string) password <required>
+(string) device_token <required>
+```
+
+###### request entries:
+
+```
+(number) id <required,number> (business id)
+(number) country <required,number> (country id)
+(number) state <required,number> (state id)
+(number) city <required,number> (city id)
+(string) address <required,string>
+```
+
+###### notic:
+
+###### response items:
+
+```
+(number) status
+(string) message
+(string) error
+```
+
+###### response example:
+
+```
+Successfuly:
+{
+    status: 201,
+    message: <string>
+}
+
+Error:
+{
+    status: (206/400/403/404/500)
+    error: <message>
+}
+```
+
+### Update business address
+
+###### url:
+
+```
+/dashboard/addresses/update
+```
+
+###### method:
+
+** POST **
+
+###### header:
+
+```
+(string) token <required>
+(string) username <required>
+(string) password <required>
+(string) device_token <required>
+```
+
+###### request entries:
+
+```
+(number) id <required,number> (address id)
+(number) business_id <required,number> (business id)
+(number) country <required,number> (country id)
+(number) state <required,number> (state id)
+(number) city <required,number> (city id)
+(string) address <required,string>
+```
+
+###### notic:
+
+###### response items:
+
+```
+(number) status
+(string) message
+(string) error
+```
+
+###### response example:
+
+```
+Successfuly:
+{
+    status: 202,
+    message: <string>
+}
+
+Error:
+{
+    status: (206/400/403/404/500)
+    error: <message>
+}
+```
+
+### Remove business address
+
+###### url:
+
+```
+/dashboard/addresses/remove
+```
+
+###### method:
+
+** DELETE **
+
+###### header:
+
+```
+(string) token <required>
+(string) username <required>
+(string) password <required>
+(string) device_token <required>
+```
+
+###### request entries:
+
+```
+(number) id <required,number> (address id)
+(number) business_id <required,number> (business id)
+```
+
+###### notic:
+
+###### response items:
+
+```
+(number) status
+(string) message
+(string) error
+```
+
+###### response example:
+
+```
+Successfuly:
+{
+    status: 202,
+    message: <string>
+}
+
+Error:
+{
+    status: (206/400/403/404/500)
     error: <message>
 }
 ```
