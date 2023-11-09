@@ -358,9 +358,9 @@ Successfuly:
             'author' => <string>,
             'image' => <image link>
         }
-        page: <number>
-        has_more: <boolean>
-    ]
+    ],
+    page: <number>,
+    has_more: <boolean>
 }
 
 Error:
@@ -628,9 +628,9 @@ Successfuly:
             'author' => <string>,
             'image' => <image link>
         }
-        page: <number>
-        has_more: <boolean>
-    ]
+    ],
+    page: <number>,
+    has_more: <boolean>
 }
 
 Error:
@@ -2258,6 +2258,7 @@ Error:
 
 ```
 (number) page <required>
+(number) id <required> (business id)
 ```
 
 ###### notic:
@@ -2294,9 +2295,9 @@ Successfuly:
             'author' => <string>,
             'image' => <image link>
         }
-        page: <number>
-        has_more: <boolean>
-    ]
+    ],
+    page: <number>,
+    has_more: <boolean>
 }
 
 Error:
@@ -2358,8 +2359,132 @@ Successfuly:
             'id' => <id>,
             'content' => <link>
         }
-        page: <number>
-        has_more: <boolean>
+    ],
+    page: <number>,
+    has_more: <boolean>
+}
+
+Error:
+{
+    status: (206/400/403/404)
+    error: <message>
+}
+```
+
+### Get user businesses list
+
+###### url:
+
+```
+/dashboard/business/list
+```
+
+###### method:
+
+** GET **
+
+###### header:
+
+```
+(string) token <required>
+(string) username <required>
+(string) password <required>
+(string) device_token <required>
+```
+
+###### request entries:
+
+```
+(number) id <required> (business id)
+```
+
+###### notic:
+
+** The response.page is the next page. exam: you sent 1 and responsed 2 **
+
+###### response items:
+
+```
+(number) status
+(string) error
+(array) data
+(number) page
+(booloean) has_more
+```
+
+###### response example:
+
+```
+Successfuly:
+{
+    status: 200,
+    data: [
+        {
+            'id' => <id>,
+            'name' => <name>,
+        }
+    ]
+}
+
+Error:
+{
+    status: (206/400/403/404)
+    error: <message>
+}
+```
+
+### Get user businesses information
+
+###### url:
+
+```
+/dashboard/business/information
+```
+
+###### method:
+
+** GET **
+
+###### header:
+
+```
+(string) token <required>
+(string) username <required>
+(string) password <required>
+(string) device_token <required>
+```
+
+###### request entries:
+
+```
+(number) id <required> (business id)
+```
+
+###### notic:
+
+** The response.page is the next page. exam: you sent 1 and responsed 2 **
+
+###### response items:
+
+```
+(number) status
+(string) error
+(array) data
+(number) page
+(booloean) has_more
+```
+
+###### response example:
+
+```
+Successfuly:
+{
+    status: 200,
+    data: [
+        {
+            'id' => <id>,
+            'name' => <name>,
+        }
     ]
 }
 
