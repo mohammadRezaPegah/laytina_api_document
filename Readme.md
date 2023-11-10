@@ -57,6 +57,11 @@ Get business address
 Create business address
 Update business address
 Remove business address
+Identity reset start
+Identity reset confirm
+Create story
+Story renew
+Story remove
 
 ########## Authuenticated url's end ##########
 
@@ -415,6 +420,8 @@ Error:
 (string) error
 (string) path
 (string) file_name
+(string) mime_type
+(string) play_time
 ```
 
 ###### response example:
@@ -425,6 +432,8 @@ Successfuly:
     status: 201,
     path: <link>
     file_name: <string>
+    mime_type: <string>
+    play_time: <string>
 }
 
 Error:
@@ -2919,6 +2928,339 @@ Successfuly:
 {
     status: 202,
     message: <string>
+}
+
+Error:
+{
+    status: (206/400/403/404/500)
+    error: <message>
+}
+```
+
+### Identity reset start
+
+###### url:
+
+```
+/dashboard/business/reset-start
+```
+
+###### method:
+
+** PUT **
+
+###### header:
+
+```
+(string) token <required>
+(string) username <required>
+(string) password <required>
+(string) device_token <required>
+```
+
+###### request entries:
+
+```
+(number) id <required,number> (business id)
+```
+
+###### notic:
+
+###### response items:
+
+```
+(number) status
+(string) message
+(string) error
+(number) code_expire
+```
+
+###### response example:
+
+```
+Successfuly:
+{
+    status: 201,
+    message: <string>
+    code_expire: <number>
+}
+
+Error:
+{
+    status: (206/400/403/404/500)
+    error: <message>
+}
+```
+
+### Identity reset confirme
+
+###### url:
+
+```
+/dashboard/business/reset-confirm
+```
+
+###### method:
+
+** POST **
+
+###### header:
+
+```
+(string) token <required>
+(string) username <required>
+(string) password <required>
+(string) device_token <required>
+```
+
+###### request entries:
+
+```
+(number) id <required,number> (business id)
+(number) code <required,number> (verification code)
+```
+
+###### notic:
+
+###### response items:
+
+```
+(number) status
+(string) message
+(string) error
+```
+
+###### response example:
+
+```
+Successfuly:
+{
+    status: 200,
+    message: <string>
+}
+
+Error:
+{
+    status: (206/400/403/404/500)
+    error: <message>
+}
+```
+
+### Get user stories list
+
+###### url:
+
+```
+/dashboard/stories/list
+```
+
+###### method:
+
+** GET **
+
+###### header:
+
+```
+(string) token <required>
+(string) username <required>
+(string) password <required>
+(string) device_token <required>
+```
+
+###### request entries:
+
+```
+(number) page <required,number>
+```
+
+###### notic:
+
+###### response items:
+
+```
+(number) status
+(string) message
+(string) error
+```
+
+###### response example:
+
+```
+Successfuly:
+{
+    status: 200,
+    data: [...],
+    page: <number>
+    has_more: <boolean>
+}
+
+Error:
+{
+    status: (206/400/403)
+    error: <message>
+}
+```
+
+### Create story
+
+###### url:
+
+```
+/dashboard/stories/create
+```
+
+###### method:
+
+** POST **
+
+###### header:
+
+```
+(string) token <required>
+(string) username <required>
+(string) password <required>
+(string) device_token <required>
+```
+
+###### request entries:
+
+```
+(string) filename <required>
+(string) mime_type <required>
+(any) explore <nullable>
+(numeric) play_time <nullable>
+```
+
+###### notic:
+
+** play_time on videos is required **
+
+###### response items:
+
+```
+(number) status
+(string) message
+(string) path
+(number) id
+(string) error
+```
+
+###### response example:
+
+```
+Successfuly:
+{
+    status: 201,
+    message: <string>,
+    path: <link>,
+    id: <number>,
+}
+
+Error:
+{
+    status: (206/400/403/404/500)
+    error: <message>
+}
+```
+
+### Story renew
+
+###### url:
+
+```
+/dashboard/stories/renew
+```
+
+###### method:
+
+** POST **
+
+###### header:
+
+```
+(string) token <required>
+(string) username <required>
+(string) password <required>
+(string) device_token <required>
+```
+
+###### request entries:
+
+```
+(number) id <required>
+(any) explore <nullable>
+```
+
+###### notic:
+
+###### response items:
+
+```
+(number) status
+(string) message
+(string) error
+```
+
+###### response example:
+
+```
+Successfuly:
+{
+    status: 200,
+    message: <string>,
+}
+
+Error:
+{
+    status: (206/400/403/404/500)
+    error: <message>
+}
+```
+
+### Story remove
+
+###### url:
+
+```
+/dashboard/stories/remove
+```
+
+###### method:
+
+** POST **
+
+###### header:
+
+```
+(string) token <required>
+(string) username <required>
+(string) password <required>
+(string) device_token <required>
+```
+
+###### request entries:
+
+```
+(number) id <required>
+```
+
+###### notic:
+
+###### response items:
+
+```
+(number) status
+(string) message
+(string) error
+```
+
+###### response example:
+
+```
+Successfuly:
+{
+    status: 200,
+    message: <string>,
 }
 
 Error:
