@@ -3227,7 +3227,7 @@ Error:
 
 ###### method:
 
-** POST **
+** Delete **
 
 ###### header:
 
