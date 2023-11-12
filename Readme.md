@@ -23,6 +23,11 @@ Location search
 Content search
 Get Business information
 Get Business products
+Get Countries list
+Get all states list
+Get country states
+Get all cities list
+Get state cities
 
 ########## Guest url's end ##########
 
@@ -37,7 +42,7 @@ Update profile/logo image
 Check user business
 Get followers
 Get followings
-Get business products
+Get dashboard business products list
 Get user marks
 Start following
 Unfollow
@@ -62,6 +67,19 @@ Identity reset confirm
 Create story
 Story renew
 Story remove
+Business ladder
+User invoices list
+Get user information
+User update
+Reset password start
+Reset password confirm
+Check add story access
+Get subscription types list
+Get subscription get type
+Get subscription type methods
+Get subscription method
+Get website management url
+Product create
 
 ########## Authuenticated url's end ##########
 
@@ -79,7 +97,7 @@ Story remove
 
 ###### method:
 
-** GET **
+**GET**
 
 ###### header:
 
@@ -112,14 +130,16 @@ none
 Successfuly:
 {
     status: 200,
-    data: [
-        {
-            id: <id>,            content: <image link>
-        },
-        {
-            id: <id>,            content: <image link>
-        },
-    ]
+    data: {
+        "story_id": <number>,
+        "user_image": <string>,
+        "user_name": <string>,
+        "stories": [
+            {...},
+            {...},
+            {...},
+        ]
+    }
 }
 
 Error:
@@ -139,7 +159,7 @@ Error:
 
 ###### method:
 
-** GET **
+**GET**
 
 ###### header:
 
@@ -192,7 +212,7 @@ Error:
 
 ###### method:
 
-** GET **
+**GET**
 
 ###### header:
 
@@ -256,7 +276,7 @@ Error:
 
 ###### method:
 
-** GET **
+**GET**
 
 ###### header:
 
@@ -275,7 +295,7 @@ Error:
 
 ###### notic:
 
-** If length parameter enterd in the request, return's by the lenght else retirn's all the categories **
+**If length parameter enterd in the request, return's by the lenght else retirn's all the categories**
 
 ###### response items:
 
@@ -320,7 +340,7 @@ Error:
 
 ###### method:
 
-** GET **
+**GET**
 
 ###### header:
 
@@ -340,7 +360,7 @@ Error:
 
 ###### notic:
 
-** The response.page is the next page. exam: you sent 1 and responsed 2 **
+**The response.page is the next page. exam: you sent 1 and responsed 2**
 
 ###### response items:
 
@@ -394,7 +414,7 @@ Error:
 
 ###### method:
 
-** POST **
+**POST**
 
 ###### header:
 
@@ -453,7 +473,7 @@ Error:
 
 ###### method:
 
-** GET **
+**GET**
 
 ###### header:
 
@@ -510,7 +530,7 @@ Error:
 
 ###### method:
 
-** GET **
+**GET**
 
 ###### header:
 
@@ -597,7 +617,7 @@ Error:
 
 ###### method:
 
-** GET **
+**GET**
 
 ###### header:
 
@@ -616,7 +636,7 @@ Error:
 
 ###### notic:
 
-** The response.page is the next page. exam: you sent 1 and responsed 2 **
+**The response.page is the next page. exam: you sent 1 and responsed 2**
 
 ###### response items:
 
@@ -670,7 +690,7 @@ Error:
 
 ###### method:
 
-** PATCH **
+**PATCH**
 
 ###### header:
 
@@ -727,7 +747,7 @@ Error:
 
 ###### method:
 
-** PATCH **
+**PATCH**
 
 ###### header:
 
@@ -780,7 +800,7 @@ Error:
 
 ###### method:
 
-** POST **
+**POST**
 
 ###### header:
 
@@ -833,7 +853,7 @@ Error:
 
 ###### method:
 
-** POST **
+**POST**
 
 ###### header:
 
@@ -886,7 +906,7 @@ Error:
 
 ###### method:
 
-** POST **
+**POST**
 
 ###### header:
 
@@ -941,7 +961,7 @@ Error:
 
 ###### method:
 
-** PATCH **
+**PATCH**
 
 ###### header:
 
@@ -995,7 +1015,7 @@ Error:
 
 ###### method:
 
-** GET **
+**GET**
 
 ###### header:
 
@@ -1058,7 +1078,7 @@ Error:
 
 ###### method:
 
-** GET **
+**GET**
 
 ###### header:
 
@@ -1147,7 +1167,7 @@ Error:
 
 ###### method:
 
-** GET **
+**GET**
 
 ###### header:
 
@@ -1211,7 +1231,7 @@ Error:
 
 ###### method:
 
-** GET **
+**GET**
 
 ###### header:
 
@@ -1271,6 +1291,327 @@ Error:
 }
 ```
 
+### Get countries list
+
+###### url:
+
+```
+/location/get-countries
+```
+
+###### method:
+
+**GET**
+
+###### header:
+
+```
+(string) token <required>
+(string) username <required>
+(string) password <required>
+(string) device_token <nullable>
+```
+
+###### request entries:
+
+```
+none
+```
+
+###### notic:
+
+###### response items:
+
+```
+(number) status
+(string) error
+(array) data
+```
+
+###### response example:
+
+```
+Successfuly:
+{
+    status: 200,
+    data: [
+        {
+            name: <string>
+            fa_name: <string>
+            ar_name: <string>
+            en_name: <string>
+            nic_name: <string>
+            code: <string>
+            lang: <string>
+        },
+        {...},
+        {...},
+    ]
+}
+
+Error:
+{
+    status: (206/400/403/404)
+    error: <message>
+}
+```
+
+### Get all states list
+
+###### url:
+
+```
+/location/get-all-states
+```
+
+###### method:
+
+**GET**
+
+###### header:
+
+```
+(string) token <required>
+(string) username <required>
+(string) password <required>
+(string) device_token <nullable>
+```
+
+###### request entries:
+
+```
+none
+```
+
+###### notic:
+
+###### response items:
+
+```
+(number) status
+(string) error
+(array) data
+```
+
+###### response example:
+
+```
+Successfuly:
+{
+    status: 200,
+    data: [
+        {
+            country_id: <number>
+            name: <string>
+            fa_name: <string>
+            ar_name: <string>
+            en_name: <string>
+            slug: <string>
+        },
+        {...},
+        {...},
+    ]
+}
+
+Error:
+{
+    status: (206/400/403/404)
+    error: <message>
+}
+```
+
+### Get country states
+
+###### url:
+
+```
+/location/get-country-states
+```
+
+###### method:
+
+**GET**
+
+###### header:
+
+```
+(string) token <required>
+(string) username <required>
+(string) password <required>
+(string) device_token <nullable>
+```
+
+###### request entries:
+
+```
+(number) id <requried> (country id)
+```
+
+###### notic:
+
+###### response items:
+
+```
+(number) status
+(string) error
+(array) data
+```
+
+###### response example:
+
+```
+Successfuly:
+{
+    status: 200,
+    data: [
+        {
+            country_id: <number>
+            name: <string>
+            fa_name: <string>
+            ar_name: <string>
+            en_name: <string>
+            slug: <string>
+        },
+        {...},
+        {...},
+    ]
+}
+
+Error:
+{
+    status: (206/400/403/404)
+    error: <message>
+}
+```
+
+### Get all cities list
+
+###### url:
+
+```
+/location/get-all-cities
+```
+
+###### method:
+
+**GET**
+
+###### header:
+
+```
+(string) token <required>
+(string) username <required>
+(string) password <required>
+(string) device_token <nullable>
+```
+
+###### request entries:
+
+```
+none
+```
+
+###### notic:
+
+###### response items:
+
+```
+(number) status
+(string) error
+(array) data
+```
+
+###### response example:
+
+```
+Successfuly:
+{
+    status: 200,
+    data: [
+        {
+            state_id: <number>
+            name: <string>
+            fa_name: <string>
+            ar_name: <string>
+            en_name: <string>
+            slug: <string>
+        },
+        {...},
+        {...},
+    ]
+}
+
+Error:
+{
+    status: (206/400/403/404)
+    error: <message>
+}
+```
+
+### Get state cities
+
+###### url:
+
+```
+/location/get-state-cities
+```
+
+###### method:
+
+**GET**
+
+###### header:
+
+```
+(string) token <required>
+(string) username <required>
+(string) password <required>
+(string) device_token <nullable>
+```
+
+###### request entries:
+
+```
+(number) id <requried> (state id)
+```
+
+###### notic:
+
+###### response items:
+
+```
+(number) status
+(string) error
+(array) data
+```
+
+###### response example:
+
+```
+Successfuly:
+{
+    status: 200,
+    data: [
+        {
+            state_id: <number>
+            name: <string>
+            fa_name: <string>
+            ar_name: <string>
+            en_name: <string>
+            slug: <string>
+        },
+        {...},
+        {...},
+    ]
+}
+
+Error:
+{
+    status: (206/400/403/404)
+    error: <message>
+}
+```
+
 ## Authenticated url's:
 
 ### Get user unread notifications
@@ -1283,7 +1624,7 @@ dashboard/notifications/get-unreaded
 
 ###### method:
 
-** GET **
+**GET**
 
 ###### header:
 
@@ -1353,7 +1694,7 @@ dashboard/profile/products
 
 ###### method:
 
-** GET **
+**GET**
 
 ###### header:
 
@@ -1433,7 +1774,7 @@ dashboard/profile
 
 ###### method:
 
-** GET **
+**GET**
 
 ###### header:
 
@@ -1495,7 +1836,7 @@ dashboard/profile/updateProfileImage
 
 ###### method:
 
-** POST **
+**POST**
 
 ###### header:
 
@@ -1549,7 +1890,7 @@ dashboard/user/check-business
 
 ###### method:
 
-** GET **
+**GET**
 
 ###### header:
 
@@ -1606,7 +1947,7 @@ dashboard/follow/followers
 
 ###### method:
 
-** GET **
+**GET**
 
 ###### header:
 
@@ -1680,7 +2021,7 @@ dashboard/follow/followings
 
 ###### method:
 
-** GET **
+**GET**
 
 ###### header:
 
@@ -1744,17 +2085,17 @@ Error:
 }
 ```
 
-### Get business products
+### Get dashboard business products list
 
 ###### url:
 
 ```
-dashboard/follow/followings
+dashboard/business/products/list
 ```
 
 ###### method:
 
-** GET **
+**GET**
 
 ###### header:
 
@@ -1837,7 +2178,7 @@ dashboard/mark/marks
 
 ###### method:
 
-** GET **
+**GET**
 
 ###### header:
 
@@ -1892,7 +2233,7 @@ dashboard/follow/follow
 
 ###### method:
 
-** POST **
+**POST**
 
 ###### header:
 
@@ -1945,7 +2286,7 @@ dashboard/follow/unfollow
 
 ###### method:
 
-** POST **
+**POST**
 
 ###### header:
 
@@ -1998,7 +2339,7 @@ dashboard/mark/product-mark
 
 ###### method:
 
-** POST **
+**POST**
 
 ###### header:
 
@@ -2051,7 +2392,7 @@ dashboard/mark/product-unmark
 
 ###### method:
 
-** POST **
+**POST**
 
 ###### header:
 
@@ -2104,7 +2445,7 @@ dashboard/mark/business-mark
 
 ###### method:
 
-** POST **
+**POST**
 
 ###### header:
 
@@ -2157,7 +2498,7 @@ dashboard/mark/business-unmark
 
 ###### method:
 
-** POST **
+**POST**
 
 ###### header:
 
@@ -2210,7 +2551,7 @@ dashboard/user/wallet-credit
 
 ###### method:
 
-** GET **
+**GET**
 
 ###### header:
 
@@ -2263,7 +2604,7 @@ Error:
 
 ###### method:
 
-** GET **
+**GET**
 
 ###### header:
 
@@ -2271,7 +2612,7 @@ Error:
 (string) token <required>
 (string) username <required>
 (string) password <required>
-(string) device_token <required>
+(string) authorization_token <required>
 ```
 
 ###### request entries:
@@ -2283,7 +2624,7 @@ Error:
 
 ###### notic:
 
-** The response.page is the next page. exam: you sent 1 and responsed 2 **
+**The response.page is the next page. exam: you sent 1 and responsed 2**
 
 ###### response items:
 
@@ -2337,7 +2678,7 @@ Error:
 
 ###### method:
 
-** GET **
+**GET**
 
 ###### header:
 
@@ -2345,7 +2686,7 @@ Error:
 (string) token <required>
 (string) username <required>
 (string) password <required>
-(string) device_token <required>
+(string) authorization_token <required>
 ```
 
 ###### request entries:
@@ -2356,7 +2697,7 @@ Error:
 
 ###### notic:
 
-** The response.page is the next page. exam: you sent 1 and responsed 2 **
+**The response.page is the next page. exam: you sent 1 and responsed 2**
 
 ###### response items:
 
@@ -2401,7 +2742,7 @@ Error:
 
 ###### method:
 
-** GET **
+**GET**
 
 ###### header:
 
@@ -2409,7 +2750,7 @@ Error:
 (string) token <required>
 (string) username <required>
 (string) password <required>
-(string) device_token <required>
+(string) authorization_token <required>
 ```
 
 ###### request entries:
@@ -2420,7 +2761,7 @@ Error:
 
 ###### notic:
 
-** The response.page is the next page. exam: you sent 1 and responsed 2 **
+**The response.page is the next page. exam: you sent 1 and responsed 2**
 
 ###### response items:
 
@@ -2463,7 +2804,7 @@ Error:
 
 ###### method:
 
-** GET **
+**GET**
 
 ###### header:
 
@@ -2471,7 +2812,7 @@ Error:
 (string) token <required>
 (string) username <required>
 (string) password <required>
-(string) device_token <required>
+(string) authorization_token <required>
 ```
 
 ###### request entries:
@@ -2482,7 +2823,7 @@ Error:
 
 ###### notic:
 
-** The response.page is the next page. exam: you sent 1 and responsed 2 **
+**The response.page is the next page. exam: you sent 1 and responsed 2**
 
 ###### response items:
 
@@ -2525,7 +2866,7 @@ Error:
 
 ###### method:
 
-** POST **
+**POST**
 
 ###### header:
 
@@ -2533,7 +2874,7 @@ Error:
 (string) token <required>
 (string) username <required>
 (string) password <required>
-(string) device_token <required>
+(string) authorization_token <required>
 ```
 
 ###### request entries:
@@ -2565,7 +2906,7 @@ Legall person sum with below parameters
 
 ###### notic:
 
-** If user insert national_id, registration_code is nullable else, it is required **
+**If user insert national_id, registration_code is nullable else, it is required**
 
 ###### response items:
 
@@ -2601,7 +2942,7 @@ Error:
 
 ###### method:
 
-** POST **
+**POST**
 
 ###### header:
 
@@ -2609,7 +2950,7 @@ Error:
 (string) token <required>
 (string) username <required>
 (string) password <required>
-(string) device_token <required>
+(string) authorization_token <required>
 ```
 
 ###### request entries:
@@ -2626,7 +2967,7 @@ Error:
 
 ###### notic:
 
-** Id parameter is the business id **
+**Id parameter is the business id**
 
 ###### response items:
 
@@ -2662,7 +3003,7 @@ Error:
 
 ###### method:
 
-** get **
+**get**
 
 ###### header:
 
@@ -2670,7 +3011,7 @@ Error:
 (string) token <required>
 (string) username <required>
 (string) password <required>
-(string) device_token <required>
+(string) authorization_token <required>
 ```
 
 ###### request entries:
@@ -2723,7 +3064,7 @@ Error:
 
 ###### method:
 
-** get **
+**get**
 
 ###### header:
 
@@ -2731,7 +3072,7 @@ Error:
 (string) token <required>
 (string) username <required>
 (string) password <required>
-(string) device_token <required>
+(string) authorization_token <required>
 ```
 
 ###### request entries:
@@ -2778,7 +3119,7 @@ Error:
 
 ###### method:
 
-** POST **
+**POST**
 
 ###### header:
 
@@ -2786,7 +3127,7 @@ Error:
 (string) token <required>
 (string) username <required>
 (string) password <required>
-(string) device_token <required>
+(string) authorization_token <required>
 ```
 
 ###### request entries:
@@ -2835,7 +3176,7 @@ Error:
 
 ###### method:
 
-** POST **
+**POST**
 
 ###### header:
 
@@ -2843,7 +3184,7 @@ Error:
 (string) token <required>
 (string) username <required>
 (string) password <required>
-(string) device_token <required>
+(string) authorization_token <required>
 ```
 
 ###### request entries:
@@ -2893,7 +3234,7 @@ Error:
 
 ###### method:
 
-** DELETE **
+**DELETE**
 
 ###### header:
 
@@ -2901,7 +3242,7 @@ Error:
 (string) token <required>
 (string) username <required>
 (string) password <required>
-(string) device_token <required>
+(string) authorization_token <required>
 ```
 
 ###### request entries:
@@ -2947,7 +3288,7 @@ Error:
 
 ###### method:
 
-** PUT **
+**PUT**
 
 ###### header:
 
@@ -2955,7 +3296,7 @@ Error:
 (string) token <required>
 (string) username <required>
 (string) password <required>
-(string) device_token <required>
+(string) authorization_token <required>
 ```
 
 ###### request entries:
@@ -3002,7 +3343,7 @@ Error:
 
 ###### method:
 
-** POST **
+**POST**
 
 ###### header:
 
@@ -3010,7 +3351,7 @@ Error:
 (string) token <required>
 (string) username <required>
 (string) password <required>
-(string) device_token <required>
+(string) authorization_token <required>
 ```
 
 ###### request entries:
@@ -3056,7 +3397,7 @@ Error:
 
 ###### method:
 
-** GET **
+**GET**
 
 ###### header:
 
@@ -3064,7 +3405,7 @@ Error:
 (string) token <required>
 (string) username <required>
 (string) password <required>
-(string) device_token <required>
+(string) authorization_token <required>
 ```
 
 ###### request entries:
@@ -3111,7 +3452,7 @@ Error:
 
 ###### method:
 
-** POST **
+**POST**
 
 ###### header:
 
@@ -3119,7 +3460,7 @@ Error:
 (string) token <required>
 (string) username <required>
 (string) password <required>
-(string) device_token <required>
+(string) authorization_token <required>
 ```
 
 ###### request entries:
@@ -3133,7 +3474,7 @@ Error:
 
 ###### notic:
 
-** play_time on videos is required **
+**play_time on videos is required**
 
 ###### response items:
 
@@ -3173,7 +3514,7 @@ Error:
 
 ###### method:
 
-** POST **
+**POST**
 
 ###### header:
 
@@ -3181,7 +3522,7 @@ Error:
 (string) token <required>
 (string) username <required>
 (string) password <required>
-(string) device_token <required>
+(string) authorization_token <required>
 ```
 
 ###### request entries:
@@ -3227,7 +3568,7 @@ Error:
 
 ###### method:
 
-** Delete **
+**Delete**
 
 ###### header:
 
@@ -3235,7 +3576,7 @@ Error:
 (string) token <required>
 (string) username <required>
 (string) password <required>
-(string) device_token <required>
+(string) authorization_token <required>
 ```
 
 ###### request entries:
@@ -3266,6 +3607,782 @@ Successfuly:
 Error:
 {
     status: (206/400/403/404/500)
+    error: <message>
+}
+```
+
+### Business ladder
+
+###### url:
+
+```
+/dashboard/business/ladder
+```
+
+###### method:
+
+**POST**
+
+###### header:
+
+```
+(string) token <required>
+(string) username <required>
+(string) password <required>
+(string) authorization_token <required>
+```
+
+###### request entries:
+
+```
+(number) id <required> (business id)
+```
+
+###### notic:
+
+###### response items:
+
+```
+(number) status
+(string) message
+(string) pay_type (id)
+(string) error
+```
+
+###### response example:
+
+```
+Successfuly:
+{
+    status: 201,
+    message: <string>,
+}
+
+Disabled:
+    {
+        status: 403
+        error: <message>
+    }
+None subscription:
+
+    {
+        status: 403
+        error: <message>
+        pay_type: <number>
+    }
+
+Error:
+{
+    status: (206/400/403/404/500)
+    error: <message>
+}
+```
+
+### User invoices list
+
+###### url:
+
+```
+/dashboard/user/incoives/list
+```
+
+###### method:
+
+**GET**
+
+###### header:
+
+```
+(string) token <required>
+(string) username <required>
+(string) password <required>
+(string) authorization_token <required>
+```
+
+###### request entries:
+
+```
+(number) page <required>
+```
+
+###### notic:
+
+###### response items:
+
+```
+(number) status
+(array) data
+(number) page
+(boolean) has_more
+(string) error
+```
+
+###### response example:
+
+```
+Successfuly:
+{
+    status: 200,
+    data: [
+        {
+            type: <string>
+            amount: <string>
+            invoice_number: <number>
+            tracking_number: <number>
+            discount: <string>
+            date: <date>
+            status: <string>
+        },
+        {...},
+        {...},
+    ],
+    page: <number>,
+    has_more: <boolean>
+}
+
+Error:
+{
+    status: (206/400/403/404)
+    error: <message>
+}
+```
+
+### Get user information
+
+###### url:
+
+```
+/dashboard/user/information
+```
+
+###### method:
+
+**GET**
+
+###### header:
+
+```
+(string) token <required>
+(string) username <required>
+(string) password <required>
+(string) authorization_token <required>
+```
+
+###### request entries:
+
+```
+none
+```
+
+###### notic:
+
+###### response items:
+
+```
+(number) status
+(array) data
+(string) error
+```
+
+###### response example:
+
+```
+Successfuly:
+{
+    status: 200,
+    data: {
+        'username': <string>,
+        'email': <email>,
+        'citizen_id': <number>,
+        'first_name': <string>,
+        'last_name': <string>,
+        'image': <link>,
+        'phone': <number>,
+        'user_referal_code': <string>,
+        'confirmed': <boolean>,
+        'started_at': <date>
+    },
+}
+
+Error:
+{
+    status: (206/400/403/404)
+    error: <message>
+}
+```
+
+### User update
+
+###### url:
+
+```
+/dashboard/user/update
+```
+
+###### method:
+
+**POST**
+
+###### header:
+
+```
+(string) token <required>
+(string) username <required>
+(string) password <required>
+(string) authorization_token <required>
+```
+
+###### request entries:
+
+```
+(string) first_name <required>
+(string) last_name <required>
+(string) username <required>
+(email) email <required>
+(phone) phone <required>
+(string) citizen_id <required>
+```
+
+###### notic:
+
+###### response items:
+
+```
+(number) status
+(array) data
+(string) error
+```
+
+###### response example:
+
+```
+Successfuly:
+{
+    status: 200,
+    data: {
+        'username': <string>,
+        'email': <email>,
+        'citizen_id': <number>,
+        'first_name': <string>,
+        'last_name': <string>,
+        'image': <link>,
+        'phone': <number>,
+        'user_referal_code': <string>,
+        'confirmed': <boolean>,
+        'started_at': <date>
+    },
+}
+
+Error:
+{
+    status: (206/400/403/404)
+    error: <message>
+}
+```
+
+### Reset password start
+
+###### url:
+
+```
+/dashboard/user/password/reset-start
+```
+
+###### method:
+
+**GET**
+
+###### header:
+
+```
+(string) token <required>
+(string) username <required>
+(string) password <required>
+(string) authorization_token <required>
+```
+
+###### request entries:
+
+```
+none
+```
+
+###### notic:
+
+###### response items:
+
+```
+(number) status
+(string) message
+(string) error
+```
+
+###### response example:
+
+```
+Successfuly:
+{
+    status: 201,
+    message: <string>
+}
+
+Error:
+{
+    status: (206/400/403/404/500)
+    error: <message>
+}
+```
+
+### Reset password confirm
+
+###### url:
+
+```
+/dashboard/user/password/reset-confirm
+```
+
+###### method:
+
+**POST**
+
+###### header:
+
+```
+(string) token <required>
+(string) username <required>
+(string) password <required>
+(string) authorization_token <required>
+```
+
+###### request entries:
+
+```
+(number) code <required> (verification code)
+(password) password <required>
+(password) password_confirmation <required>
+```
+
+###### notic:
+
+###### response items:
+
+```
+(number) status
+(string) message
+(string) error
+```
+
+###### response example:
+
+```
+Successfuly:
+{
+    status: 202,
+    message: <string>
+}
+
+Error:
+{
+    status: (206/400/403/404/500)
+    error: <message>
+}
+```
+
+### Check add story access
+
+###### url:
+
+```
+/dashboard/stories/check-add-story-access
+```
+
+###### method:
+
+**GET**
+
+###### header:
+
+```
+(string) token <required>
+(string) username <required>
+(string) password <required>
+(string) authorization_token <required>
+```
+
+###### request entries:
+
+```
+none
+```
+
+###### notic:
+
+###### response items:
+
+```
+(number) status
+(string) message
+(string) error
+```
+
+###### response example:
+
+```
+Successfuly:
+{
+    status: 200,
+    can_store: <boolean>
+}
+
+Error:
+{
+    status: (206/400/403/404)
+    error: <message>
+}
+```
+
+### Get subscription types list
+
+###### url:
+
+```
+/dashboard/saubscriptions/types-all
+```
+
+###### method:
+
+**GET**
+
+###### header:
+
+```
+(string) token <required>
+(string) username <required>
+(string) password <required>
+(string) authorization_token <required>
+```
+
+###### request entries:
+
+```
+none
+```
+
+###### notic:
+
+###### response items:
+
+```
+(number) status
+(string) error
+(array) data
+```
+
+###### response example:
+
+```
+Successfuly:
+{
+    status: 200,
+    data: [
+        {
+            "id": <number>,
+            "name": <string>,
+            "pname": <string>,
+            "active": <number>,
+            "on_business": <number>
+        },
+        {...},
+        {...},
+    ]
+}
+
+Error:
+{
+    status: (206/403)
+    error: <message>
+}
+```
+
+### Get subscription get type
+
+###### url:
+
+```
+/dashboard/saubscriptions/types-all
+```
+
+###### method:
+
+**GET**
+
+###### header:
+
+```
+(string) token <required>
+(string) username <required>
+(string) password <required>
+(string) authorization_token <required>
+```
+
+###### request entries:
+
+```
+(number) id <required> (type_id)
+```
+
+###### notic:
+
+###### response items:
+
+```
+(number) status
+(string) error
+(array) data
+```
+
+###### response example:
+
+```
+Successfuly:
+{
+    status: 200,
+    data: [
+        "id": <number>,
+        "name": <string>,
+        "pname": <string>,
+        "active": <number>,
+        "on_business": <number>
+    ]
+}
+
+Error:
+{
+    status: (206/403)
+    error: <message>
+}
+```
+
+### Get subscription type methods
+
+###### url:
+
+```
+/dashboard/saubscriptions/type-methods
+```
+
+###### method:
+
+**GET**
+
+###### header:
+
+```
+(string) token <required>
+(string) username <required>
+(string) password <required>
+(string) authorization_token <required>
+```
+
+###### request entries:
+
+```
+(number) id <required> (type_id)
+```
+
+###### notic:
+
+###### response items:
+
+```
+(number) status
+(string) error
+(array) data
+```
+
+###### response example:
+
+```
+Successfuly:
+{
+    status: 200,
+    data: [
+        {...},
+        {...},
+        {...}
+    ]
+}
+
+Error:
+{
+    status: (206/403)
+    error: <message>
+}
+```
+
+### Get subscription method
+
+###### url:
+
+```
+/dashboard/saubscriptions/method
+```
+
+###### method:
+
+**GET**
+
+###### header:
+
+```
+(string) token <required>
+(string) username <required>
+(string) password <required>
+(string) authorization_token <required>
+```
+
+###### request entries:
+
+```
+(number) id <required> (method_id)
+```
+
+###### notic:
+
+###### response items:
+
+```
+(number) status
+(string) error
+(array) data
+```
+
+###### response example:
+
+```
+Successfuly:
+{
+    status: 200,
+    data: {
+        ...
+    }
+}
+
+Error:
+{
+    status: (206/403)
+    error: <message>
+}
+```
+
+### Get website management url
+
+###### url:
+
+```
+/dashboard/website/get-management-url
+```
+
+###### method:
+
+**GET**
+
+###### header:
+
+```
+(string) token <required>
+(string) username <required>
+(string) password <required>
+(string) authorization_token <required>
+```
+
+###### request entries:
+
+```
+none
+```
+
+###### notic:
+
+###### response items:
+
+```
+(number) status
+(string) error
+(string) link
+```
+
+###### response example:
+
+```
+Successfuly:
+{
+    status: 200,
+    link: <link>
+}
+
+Error:
+{
+    status: (206/403/500)
+    error: <message>
+}
+```
+
+### Product create
+
+###### url:
+
+```
+/dashboard/business/products/create
+```
+
+###### method:
+
+**POST**
+
+###### header:
+
+```
+(string) token <required>
+(string) username <required>
+(string) password <required>
+(string) authorization_token <required>
+```
+
+###### request entries:
+
+```
+(number) id <required> (business id)
+(number) category <required> (category id)
+(string) name <required>
+(string) description <required>
+(number) price <nullable, numeric>
+(string) image <requried> (image name)
+(array) tags <nullable>
+```
+
+###### notic:
+
+###### response items:
+
+```
+(number) status
+(string) error
+(string) message
+```
+
+###### response example:
+
+```
+Successfuly:
+{
+    status: 201,
+    message: <string>
+}
+
+Error:
+{
+    status: (206/401/403/404)
     error: <message>
 }
 ```
