@@ -28,6 +28,7 @@ Get all states list
 Get country states
 Get all cities list
 Get state cities
+Get Product tags list
 
 ########## Guest url's end ##########
 
@@ -80,6 +81,11 @@ Get subscription type methods
 Get subscription method
 Get website management url
 Product create
+Product update
+Product remove
+Product single ladder
+Product group ladder store
+product group ladder unpaids information
 
 ########## Authuenticated url's end ##########
 
@@ -145,7 +151,7 @@ Successfuly:
 Error:
 {
     status: (206/403/404)
-    error: <message>
+    error: <string>
 }
 ```
 
@@ -198,7 +204,7 @@ Successfuly:
 Error:
 {
     status: (206/403/404)
-    error: <message>
+    error: <string>
 }
 ```
 
@@ -262,7 +268,7 @@ Successfuly:
 Error:
 {
     status: (206/403/404)
-    error: <message>
+    error: <string>
 }
 ```
 
@@ -326,7 +332,7 @@ Successfuly:
 Error:
 {
     status: (206/400/403/404)
-    error: <message>
+    error: <string>
 }
 ```
 
@@ -400,7 +406,7 @@ Successfuly:
 Error:
 {
     status: (206/400/403/404)
-    error: <message>
+    error: <string>
 }
 ```
 
@@ -461,7 +467,7 @@ Successfuly:
 Error:
 {
     status: (206/400/403/404)
-    error: <message>
+    error: <string>
 }
 ```
 
@@ -511,14 +517,14 @@ Error:
 Successfuly:
 {
     status: 201,
-    message: <message>
+    message: <string>
     token : <string>
 }
 
 Error:
 {
     status: (206/400/403/404/500)
-    error: <message>
+    error: <string>
 }
 ```
 
@@ -605,7 +611,7 @@ Successfuly:
 Error:
 {
     status: (206/400/403/404/500)
-    error: <message>
+    error: <string>
 }
 ```
 
@@ -678,7 +684,7 @@ Successfuly:
 Error:
 {
     status: (206/400/403/404)
-    error: <message>
+    error: <string>
 }
 ```
 
@@ -735,7 +741,7 @@ Successfuly:
 Error:
 {
     status: (206/403/500)
-    error: <message>
+    error: <string>
 }
 ```
 
@@ -788,7 +794,7 @@ Successfuly:
 Error:
 {
     status: (206/400/403/404/417)
-    error: <message>
+    error: <string>
 }
 ```
 
@@ -841,7 +847,7 @@ Successfuly:
 Error:
 {
     status: (206/400/403/404/500/501)
-    error: <message>
+    error: <string>
 }
 ```
 
@@ -894,7 +900,7 @@ Successfuly:
 Error:
 {
     status: (206/400/403/404/500/501)
-    error: <message>
+    error: <string>
 }
 ```
 
@@ -949,7 +955,7 @@ Successfuly:
 Error:
 {
     status: (206/400/401/403/404/500/501)
-    error: <message>
+    error: <string>
 }
 ```
 
@@ -1003,7 +1009,7 @@ Successfuly:
 Error:
 {
     status: (206/403/404/501)
-    error: <message>
+    error: <string>
 }
 ```
 
@@ -1066,7 +1072,7 @@ Successfuly:
 Error:
 {
     status: (206/403/404)
-    error: <message>
+    error: <string>
 }
 ```
 
@@ -1155,7 +1161,7 @@ Successfuly:
 Error:
 {
     status: (206/403/404)
-    error: <message>
+    error: <string>
 }
 ```
 
@@ -1219,7 +1225,7 @@ Successfuly:
 Error:
 {
     status: (206/400/403/404)
-    error: <message>
+    error: <string>
 }
 ```
 
@@ -1289,7 +1295,7 @@ Successfuly:
 Error:
 {
     status: (206/400/403/404)
-    error: <message>
+    error: <string>
 }
 ```
 
@@ -1354,7 +1360,7 @@ Successfuly:
 Error:
 {
     status: (206/400/403/404)
-    error: <message>
+    error: <string>
 }
 ```
 
@@ -1418,7 +1424,7 @@ Successfuly:
 Error:
 {
     status: (206/400/403/404)
-    error: <message>
+    error: <string>
 }
 ```
 
@@ -1482,7 +1488,7 @@ Successfuly:
 Error:
 {
     status: (206/400/403/404)
-    error: <message>
+    error: <string>
 }
 ```
 
@@ -1546,7 +1552,7 @@ Successfuly:
 Error:
 {
     status: (206/400/403/404)
-    error: <message>
+    error: <string>
 }
 ```
 
@@ -1610,7 +1616,67 @@ Successfuly:
 Error:
 {
     status: (206/400/403/404)
-    error: <message>
+    error: <string>
+}
+```
+
+### Get Product tags list
+
+###### url:
+
+```
+/product-tags/list
+```
+
+###### method:
+
+**GET**
+
+###### header:
+
+```
+(string) token <required>
+(string) username <required>
+(string) password <required>
+(string) device_token <nullable>
+```
+
+###### request entries:
+
+```
+none
+```
+
+###### notic:
+
+###### response items:
+
+```
+(number) status
+(string) error
+(array) data
+```
+
+###### response example:
+
+```
+Successfuly:
+{
+    status: 200,
+    data: [
+        {
+            id: <number>
+            name: <string>
+        },
+        {...},
+        {...},
+    ]
+}
+
+Error:
+{
+    status: (206/400/403/404)
+    error: <string>
 }
 ```
 
@@ -1682,7 +1748,7 @@ Successfuly:
 Error:
 {
     status: (206/403/404)
-    error: <message>
+    error: <string>
 }
 ```
 
@@ -1762,7 +1828,7 @@ Successfuly:
 Error:
 {
     status: (206/400/403/404)
-    error: <message>
+    error: <string>
 }
 ```
 
@@ -1824,7 +1890,7 @@ Successfuly:
 Error:
 {
     status: (206/403/404)
-    error: <message>
+    error: <string>
 }
 ```
 
@@ -1878,7 +1944,7 @@ Successfuly:
 Error:
 {
     status: (206/400/403/406/500)
-    error: <message>
+    error: <string>
 }
 ```
 
@@ -1935,7 +2001,7 @@ Successfuly:
 Error:
 {
     status: (206/403/404)
-    error: <message>
+    error: <string>
 }
 ```
 
@@ -2009,7 +2075,7 @@ Successfuly:
 Error:
 {
     status: (206/400/403/404)
-    error: <message>
+    error: <string>
 }
 ```
 
@@ -2083,7 +2149,7 @@ Successfuly:
 Error:
 {
     status: (206/400/403/404)
-    error: <message>
+    error: <string>
 }
 ```
 
@@ -2166,7 +2232,7 @@ Successfuly:
 Error:
 {
     status: (206/400/401/403)
-    error: <message>
+    error: <string>
 }
 ```
 
@@ -2221,7 +2287,7 @@ Successfuly:
 Error:
 {
     status: (206/400/401/403)
-    error: <message>
+    error: <string>
 }
 ```
 
@@ -2268,13 +2334,13 @@ dashboard/follow/follow
 Successfuly:
 {
     status: 201,
-    message: <message>
+    message: <string>
 }
 
 Error:
 {
     status: (202/206/400/403/404/500)
-    error: <message>
+    error: <string>
 }
 ```
 
@@ -2321,13 +2387,13 @@ dashboard/follow/unfollow
 Successfuly:
 {
     status: 202,
-    message: <message>
+    message: <string>
 }
 
 Error:
 {
     status: (206/400/403/404/500)
-    error: <message>
+    error: <string>
 }
 ```
 
@@ -2374,13 +2440,13 @@ dashboard/mark/product-mark
 Successfuly:
 {
     status: 201,
-    message: <message>
+    message: <string>
 }
 
 Error:
 {
     status: (202/206/400/403/404/500)
-    error: <message>
+    error: <string>
 }
 ```
 
@@ -2427,13 +2493,13 @@ dashboard/mark/product-unmark
 Successfuly:
 {
     status: 202,
-    message: <message>
+    message: <string>
 }
 
 Error:
 {
     status: (206/400/403/404/500)
-    error: <message>
+    error: <string>
 }
 ```
 
@@ -2480,13 +2546,13 @@ dashboard/mark/business-mark
 Successfuly:
 {
     status: 201,
-    message: <message>
+    message: <string>
 }
 
 Error:
 {
     status: (202/206/400/403/404/500)
-    error: <message>
+    error: <string>
 }
 ```
 
@@ -2533,13 +2599,13 @@ dashboard/mark/business-unmark
 Successfuly:
 {
     status: 202,
-    message: <message>
+    message: <string>
 }
 
 Error:
 {
     status: (206/400/403/404/500)
-    error: <message>
+    error: <string>
 }
 ```
 
@@ -2592,7 +2658,7 @@ Successfuly:
 Error:
 {
     status: (206/403/404)
-    error: <message>
+    error: <string>
 }
 ```
 
@@ -2666,7 +2732,7 @@ Successfuly:
 Error:
 {
     status: (206/400/403/404)
-    error: <message>
+    error: <string>
 }
 ```
 
@@ -2730,7 +2796,7 @@ Successfuly:
 Error:
 {
     status: (206/400/403/404)
-    error: <message>
+    error: <string>
 }
 ```
 
@@ -2792,7 +2858,7 @@ Successfuly:
 Error:
 {
     status: (206/400/403/404)
-    error: <message>
+    error: <string>
 }
 ```
 
@@ -2854,7 +2920,7 @@ Successfuly:
 Error:
 {
     status: (206/400/403/404)
-    error: <message>
+    error: <string>
 }
 ```
 
@@ -2930,7 +2996,7 @@ Successfuly:
 Error:
 {
     status: (206/400/403/404/500)
-    error: <message>
+    error: <string>
 }
 ```
 
@@ -2991,7 +3057,7 @@ Successfuly:
 Error:
 {
     status: (206/400/403/404)
-    error: <message>
+    error: <string>
 }
 ```
 
@@ -3052,7 +3118,7 @@ Successfuly:
 Error:
 {
     status: (206/400/403/404)
-    error: <message>
+    error: <string>
 }
 ```
 
@@ -3107,7 +3173,7 @@ Successfuly:
 Error:
 {
     status: (206/400/403/404)
-    error: <message>
+    error: <string>
 }
 ```
 
@@ -3164,7 +3230,7 @@ Successfuly:
 Error:
 {
     status: (206/400/403/404/500)
-    error: <message>
+    error: <string>
 }
 ```
 
@@ -3222,7 +3288,7 @@ Successfuly:
 Error:
 {
     status: (206/400/403/404/500)
-    error: <message>
+    error: <string>
 }
 ```
 
@@ -3276,7 +3342,7 @@ Successfuly:
 Error:
 {
     status: (206/400/403/404/500)
-    error: <message>
+    error: <string>
 }
 ```
 
@@ -3331,7 +3397,7 @@ Successfuly:
 Error:
 {
     status: (206/400/403/404/500)
-    error: <message>
+    error: <string>
 }
 ```
 
@@ -3385,7 +3451,7 @@ Successfuly:
 Error:
 {
     status: (206/400/403/404/500)
-    error: <message>
+    error: <string>
 }
 ```
 
@@ -3440,7 +3506,7 @@ Successfuly:
 Error:
 {
     status: (206/400/403)
-    error: <message>
+    error: <string>
 }
 ```
 
@@ -3502,7 +3568,7 @@ Successfuly:
 Error:
 {
     status: (206/400/403/404/500)
-    error: <message>
+    error: <string>
 }
 ```
 
@@ -3556,7 +3622,7 @@ Successfuly:
 Error:
 {
     status: (206/400/403/404/500)
-    error: <message>
+    error: <string>
 }
 ```
 
@@ -3609,7 +3675,7 @@ Successfuly:
 Error:
 {
     status: (206/400/403/404/500)
-    error: <message>
+    error: <string>
 }
 ```
 
@@ -3663,20 +3729,20 @@ Successfuly:
 Disabled:
     {
         status: 403
-        error: <message>
+        error: <string>
     }
 None subscription:
 
     {
         status: 403
-        error: <message>
+        error: <string>
         pay_type: <number>
     }
 
 Error:
 {
     status: (206/400/403/404/500)
-    error: <message>
+    error: <string>
 }
 ```
 
@@ -3745,7 +3811,7 @@ Successfuly:
 Error:
 {
     status: (206/400/403/404)
-    error: <message>
+    error: <string>
 }
 ```
 
@@ -3809,7 +3875,7 @@ Successfuly:
 Error:
 {
     status: (206/400/403/404)
-    error: <message>
+    error: <string>
 }
 ```
 
@@ -3878,7 +3944,7 @@ Successfuly:
 Error:
 {
     status: (206/400/403/404)
-    error: <message>
+    error: <string>
 }
 ```
 
@@ -3931,7 +3997,7 @@ Successfuly:
 Error:
 {
     status: (206/400/403/404/500)
-    error: <message>
+    error: <string>
 }
 ```
 
@@ -3986,7 +4052,7 @@ Successfuly:
 Error:
 {
     status: (206/400/403/404/500)
-    error: <message>
+    error: <string>
 }
 ```
 
@@ -4039,7 +4105,7 @@ Successfuly:
 Error:
 {
     status: (206/400/403/404)
-    error: <message>
+    error: <string>
 }
 ```
 
@@ -4102,7 +4168,7 @@ Successfuly:
 Error:
 {
     status: (206/403)
-    error: <message>
+    error: <string>
 }
 ```
 
@@ -4161,7 +4227,7 @@ Successfuly:
 Error:
 {
     status: (206/403)
-    error: <message>
+    error: <string>
 }
 ```
 
@@ -4218,7 +4284,7 @@ Successfuly:
 Error:
 {
     status: (206/403)
-    error: <message>
+    error: <string>
 }
 ```
 
@@ -4273,7 +4339,7 @@ Successfuly:
 Error:
 {
     status: (206/403)
-    error: <message>
+    error: <string>
 }
 ```
 
@@ -4326,7 +4392,7 @@ Successfuly:
 Error:
 {
     status: (206/403/500)
-    error: <message>
+    error: <string>
 }
 ```
 
@@ -4371,6 +4437,7 @@ Error:
 (number) status
 (string) error
 (string) message
+(number) pay_type (pay_type id nullable)
 ```
 
 ###### response example:
@@ -4384,7 +4451,289 @@ Successfuly:
 
 Error:
 {
-    status: (206/401/403/404)
-    error: <message>
+    status: (206/401/403/404/500)
+    error: <string>
+    pay_type: <number, nullable>
+}
+```
+
+### Product update
+
+###### url:
+
+```
+/dashboard/business/products/update
+```
+
+###### method:
+
+**POST**
+
+###### header:
+
+```
+(string) token <required>
+(string) username <required>
+(string) password <required>
+(string) authorization_token <required>
+```
+
+###### request entries:
+
+```
+(number) id <required> (product id)
+(number) category <required> (category id)
+(string) name <required>
+(string) description <required>
+(number) price <nullable, numeric>
+(string) image <nullable> (image name)
+(array) tags <nullable>
+```
+
+###### notic:
+
+###### response items:
+
+```
+(number) status
+(string) error
+(string) message
+```
+
+###### response example:
+
+```
+Successfuly:
+{
+    status: 201,
+    message: <string>
+}
+
+Error:
+{
+    status: (206/401/403/404/500)
+    error: <string>
+}
+```
+
+### Product remove
+
+###### url:
+
+```
+/dashboard/business/products/remove
+```
+
+###### method:
+
+**DELETE**
+
+###### header:
+
+```
+(string) token <required>
+(string) username <required>
+(string) password <required>
+(string) authorization_token <required>
+```
+
+###### request entries:
+
+```
+(number) id <required> (product id)
+```
+
+###### notic:
+
+###### response items:
+
+```
+(number) status
+(string) error
+(string) message
+```
+
+###### response example:
+
+```
+Successfuly:
+{
+    status: 200,
+    message: <string>
+}
+
+Error:
+{
+    status: (206/401/403/404/500)
+    error: <string>
+}
+```
+
+### Product single ladder
+
+###### url:
+
+```
+/dashboard/business/products/ladder
+```
+
+###### method:
+
+**PATCH**
+
+###### header:
+
+```
+(string) token <required>
+(string) username <required>
+(string) password <required>
+(string) authorization_token <required>
+```
+
+###### request entries:
+
+```
+(number) id <required> (product id)
+```
+
+###### notic:
+
+###### response items:
+
+```
+(number) status
+(string) error
+(string) message
+```
+
+###### response example:
+
+```
+Successfuly:
+{
+    status: 200,
+    message: <string>
+}
+
+Error:
+{
+    status: (206/401/403/404/500)
+    error: <string>
+}
+```
+
+### Product group ladder store
+
+###### url:
+
+```
+/dashboard/business/products/lagroup-ladder
+```
+
+###### method:
+
+**PATCH**
+
+###### header:
+
+```
+(string) token <required>
+(string) username <required>
+(string) password <required>
+(string) authorization_token <required>
+```
+
+###### request entries:
+
+```
+(array) ids <required> (product ids list)
+(number) business_id <required> (business id)
+```
+
+###### notic:
+
+###### response items:
+
+```
+(number) status
+(string) error
+(string) message
+```
+
+###### response example:
+
+```
+Successfuly:
+{
+    status: 201,
+    message: <string>
+}
+
+Error:
+{
+    status: (206/401/403/404/500)
+    error: <string>
+}
+```
+
+### product group ladder unpaids information
+
+###### url:
+
+```
+/dashboard/terial/get-group-ladder-unpaid-information
+```
+
+###### method:
+
+**GET**
+
+###### header:
+
+```
+(string) token <required>
+(string) username <required>
+(string) password <required>
+(string) authorization_token <required>
+```
+
+###### request entries:
+
+```
+none
+```
+
+###### notic:
+
+###### response items:
+
+```
+(number) status
+(string) error
+(string) message
+```
+
+###### response example:
+
+```
+Successfuly:
+{
+    status: (200, 201),
+    message: <string>,
+    data: {
+        'ladder_cost': <nyumber>,
+        'amount': <number>,
+        'paid_len': <number>,
+        'unpaid_len': <number>,
+        'ladders_len': <number>,
+        'pay_method': <number> (id),
+        'can_pay_with_wallet': <boolean>
+    }
+}
+
+Error:
+{
+    status: (206/401/403/404/500)
+    error: <string>
 }
 ```
