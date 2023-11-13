@@ -433,6 +433,8 @@ Error:
 
 ###### notic:
 
+**file parameter can be: profile, logo, product, story, certificate, saleExpert and licenses(the parameter name comes from database)**
+
 ###### response items:
 
 ```
