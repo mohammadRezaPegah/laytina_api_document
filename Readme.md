@@ -29,6 +29,7 @@ Get country states
 Get all cities list
 Get state cities
 Get Product tags list
+Get roles download file url
 
 ########## Guest url's end ##########
 
@@ -1680,6 +1681,59 @@ Error:
 }
 ```
 
+### Get roles download file url
+
+###### url:
+
+```
+/download/roles-link
+```
+
+###### method:
+
+**GET**
+
+###### header:
+
+```
+(string) token <required>
+(string) username <required>
+(string) password <required>
+(string) device_token <nullable>
+```
+
+###### request entries:
+
+```
+none
+```
+
+###### notic:
+
+###### response items:
+
+```
+(number) status
+(string) error
+(string) link
+```
+
+###### response example:
+
+```
+Successfuly:
+{
+    status: 200,
+    link: <string>
+}
+
+Error:
+{
+    status: (206/400/403/404)
+    error: <string>
+}
+```
+
 ## Authenticated url's:
 
 ### Get user unread notifications
@@ -1700,6 +1754,7 @@ dashboard/notifications/get-unreaded
 (string) token <required>
 (string) username <required>
 (string) password <required>
+(string) device_token <nullable>
 (string) authorization_token <required>
 ```
 
@@ -1770,6 +1825,7 @@ dashboard/profile/products
 (string) token <required>
 (string) username <required>
 (string) password <required>
+(string) device_token <nullable>
 (string) authorization_token <required>
 ```
 
@@ -1850,6 +1906,7 @@ dashboard/profile
 (string) token <required>
 (string) username <required>
 (string) password <required>
+(string) device_token <nullable>
 (string) authorization_token <required>
 ```
 
@@ -1912,6 +1969,7 @@ dashboard/profile/updateProfileImage
 (string) token <required>
 (string) username <required>
 (string) password <required>
+(string) device_token <nullable>
 (string) authorization_token <required>
 ```
 
@@ -1966,6 +2024,7 @@ dashboard/user/check-business
 (string) token <required>
 (string) username <required>
 (string) password <required>
+(string) device_token <nullable>
 (string) authorization_token <required>
 ```
 
@@ -2023,6 +2082,7 @@ dashboard/follow/followers
 (string) token <required>
 (string) username <required>
 (string) password <required>
+(string) device_token <nullable>
 (string) authorization_token <required>
 ```
 
@@ -2097,6 +2157,7 @@ dashboard/follow/followings
 (string) token <required>
 (string) username <required>
 (string) password <required>
+(string) device_token <nullable>
 (string) authorization_token <required>
 ```
 
@@ -2171,6 +2232,7 @@ dashboard/business/products/list
 (string) token <required>
 (string) username <required>
 (string) password <required>
+(string) device_token <nullable>
 (string) authorization_token <required>
 ```
 
@@ -2254,6 +2316,7 @@ dashboard/mark/marks
 (string) token <required>
 (string) username <required>
 (string) password <required>
+(string) device_token <nullable>
 (string) authorization_token <required>
 ```
 
@@ -2309,6 +2372,7 @@ dashboard/follow/follow
 (string) token <required>
 (string) username <required>
 (string) password <required>
+(string) device_token <nullable>
 (string) authorization_token <required>
 ```
 
@@ -2362,6 +2426,7 @@ dashboard/follow/unfollow
 (string) token <required>
 (string) username <required>
 (string) password <required>
+(string) device_token <nullable>
 (string) authorization_token <required>
 ```
 
@@ -2415,6 +2480,7 @@ dashboard/mark/product-mark
 (string) token <required>
 (string) username <required>
 (string) password <required>
+(string) device_token <nullable>
 (string) authorization_token <required>
 ```
 
@@ -2468,6 +2534,7 @@ dashboard/mark/product-unmark
 (string) token <required>
 (string) username <required>
 (string) password <required>
+(string) device_token <nullable>
 (string) authorization_token <required>
 ```
 
@@ -2521,6 +2588,7 @@ dashboard/mark/business-mark
 (string) token <required>
 (string) username <required>
 (string) password <required>
+(string) device_token <nullable>
 (string) authorization_token <required>
 ```
 
@@ -2574,6 +2642,7 @@ dashboard/mark/business-unmark
 (string) token <required>
 (string) username <required>
 (string) password <required>
+(string) device_token <nullable>
 (string) authorization_token <required>
 ```
 
@@ -2627,6 +2696,7 @@ dashboard/user/wallet-credit
 (string) token <required>
 (string) username <required>
 (string) password <required>
+(string) device_token <nullable>
 (string) authorization_token <required>
 ```
 
@@ -2680,6 +2750,7 @@ Error:
 (string) token <required>
 (string) username <required>
 (string) password <required>
+(string) device_token <nullable>
 (string) authorization_token <required>
 ```
 
@@ -2754,6 +2825,7 @@ Error:
 (string) token <required>
 (string) username <required>
 (string) password <required>
+(string) device_token <nullable>
 (string) authorization_token <required>
 ```
 
@@ -2818,6 +2890,7 @@ Error:
 (string) token <required>
 (string) username <required>
 (string) password <required>
+(string) device_token <nullable>
 (string) authorization_token <required>
 ```
 
@@ -2880,6 +2953,7 @@ Error:
 (string) token <required>
 (string) username <required>
 (string) password <required>
+(string) device_token <nullable>
 (string) authorization_token <required>
 ```
 
@@ -2942,6 +3016,7 @@ Error:
 (string) token <required>
 (string) username <required>
 (string) password <required>
+(string) device_token <nullable>
 (string) authorization_token <required>
 ```
 
@@ -3018,6 +3093,7 @@ Error:
 (string) token <required>
 (string) username <required>
 (string) password <required>
+(string) device_token <nullable>
 (string) authorization_token <required>
 ```
 
@@ -3079,6 +3155,7 @@ Error:
 (string) token <required>
 (string) username <required>
 (string) password <required>
+(string) device_token <nullable>
 (string) authorization_token <required>
 ```
 
@@ -3140,6 +3217,7 @@ Error:
 (string) token <required>
 (string) username <required>
 (string) password <required>
+(string) device_token <nullable>
 (string) authorization_token <required>
 ```
 
@@ -3195,6 +3273,7 @@ Error:
 (string) token <required>
 (string) username <required>
 (string) password <required>
+(string) device_token <nullable>
 (string) authorization_token <required>
 ```
 
@@ -3252,6 +3331,7 @@ Error:
 (string) token <required>
 (string) username <required>
 (string) password <required>
+(string) device_token <nullable>
 (string) authorization_token <required>
 ```
 
@@ -3310,6 +3390,7 @@ Error:
 (string) token <required>
 (string) username <required>
 (string) password <required>
+(string) device_token <nullable>
 (string) authorization_token <required>
 ```
 
@@ -3364,6 +3445,7 @@ Error:
 (string) token <required>
 (string) username <required>
 (string) password <required>
+(string) device_token <nullable>
 (string) authorization_token <required>
 ```
 
@@ -3419,6 +3501,7 @@ Error:
 (string) token <required>
 (string) username <required>
 (string) password <required>
+(string) device_token <nullable>
 (string) authorization_token <required>
 ```
 
@@ -3473,6 +3556,7 @@ Error:
 (string) token <required>
 (string) username <required>
 (string) password <required>
+(string) device_token <nullable>
 (string) authorization_token <required>
 ```
 
@@ -3528,6 +3612,7 @@ Error:
 (string) token <required>
 (string) username <required>
 (string) password <required>
+(string) device_token <nullable>
 (string) authorization_token <required>
 ```
 
@@ -3590,6 +3675,7 @@ Error:
 (string) token <required>
 (string) username <required>
 (string) password <required>
+(string) device_token <nullable>
 (string) authorization_token <required>
 ```
 
@@ -3644,6 +3730,7 @@ Error:
 (string) token <required>
 (string) username <required>
 (string) password <required>
+(string) device_token <nullable>
 (string) authorization_token <required>
 ```
 
@@ -3697,6 +3784,7 @@ Error:
 (string) token <required>
 (string) username <required>
 (string) password <required>
+(string) device_token <nullable>
 (string) authorization_token <required>
 ```
 
@@ -3764,6 +3852,7 @@ Error:
 (string) token <required>
 (string) username <required>
 (string) password <required>
+(string) device_token <nullable>
 (string) authorization_token <required>
 ```
 
@@ -3833,6 +3922,7 @@ Error:
 (string) token <required>
 (string) username <required>
 (string) password <required>
+(string) device_token <nullable>
 (string) authorization_token <required>
 ```
 
@@ -3897,6 +3987,7 @@ Error:
 (string) token <required>
 (string) username <required>
 (string) password <required>
+(string) device_token <nullable>
 (string) authorization_token <required>
 ```
 
@@ -3966,6 +4057,7 @@ Error:
 (string) token <required>
 (string) username <required>
 (string) password <required>
+(string) device_token <nullable>
 (string) authorization_token <required>
 ```
 
@@ -4019,6 +4111,7 @@ Error:
 (string) token <required>
 (string) username <required>
 (string) password <required>
+(string) device_token <nullable>
 (string) authorization_token <required>
 ```
 
@@ -4074,6 +4167,7 @@ Error:
 (string) token <required>
 (string) username <required>
 (string) password <required>
+(string) device_token <nullable>
 (string) authorization_token <required>
 ```
 
@@ -4127,6 +4221,7 @@ Error:
 (string) token <required>
 (string) username <required>
 (string) password <required>
+(string) device_token <nullable>
 (string) authorization_token <required>
 ```
 
@@ -4190,6 +4285,7 @@ Error:
 (string) token <required>
 (string) username <required>
 (string) password <required>
+(string) device_token <nullable>
 (string) authorization_token <required>
 ```
 
@@ -4249,6 +4345,7 @@ Error:
 (string) token <required>
 (string) username <required>
 (string) password <required>
+(string) device_token <nullable>
 (string) authorization_token <required>
 ```
 
@@ -4306,6 +4403,7 @@ Error:
 (string) token <required>
 (string) username <required>
 (string) password <required>
+(string) device_token <nullable>
 (string) authorization_token <required>
 ```
 
@@ -4361,6 +4459,7 @@ Error:
 (string) token <required>
 (string) username <required>
 (string) password <required>
+(string) device_token <nullable>
 (string) authorization_token <required>
 ```
 
@@ -4414,6 +4513,7 @@ Error:
 (string) token <required>
 (string) username <required>
 (string) password <required>
+(string) device_token <nullable>
 (string) authorization_token <required>
 ```
 
@@ -4475,6 +4575,7 @@ Error:
 (string) token <required>
 (string) username <required>
 (string) password <required>
+(string) device_token <nullable>
 (string) authorization_token <required>
 ```
 
@@ -4534,6 +4635,7 @@ Error:
 (string) token <required>
 (string) username <required>
 (string) password <required>
+(string) device_token <nullable>
 (string) authorization_token <required>
 ```
 
@@ -4587,6 +4689,7 @@ Error:
 (string) token <required>
 (string) username <required>
 (string) password <required>
+(string) device_token <nullable>
 (string) authorization_token <required>
 ```
 
@@ -4640,6 +4743,7 @@ Error:
 (string) token <required>
 (string) username <required>
 (string) password <required>
+(string) device_token <nullable>
 (string) authorization_token <required>
 ```
 
@@ -4694,6 +4798,7 @@ Error:
 (string) token <required>
 (string) username <required>
 (string) password <required>
+(string) device_token <nullable>
 (string) authorization_token <required>
 ```
 
