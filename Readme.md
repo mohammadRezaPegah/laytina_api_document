@@ -87,6 +87,10 @@ Product remove
 Product single ladder
 Product group ladder store
 product group ladder unpaids information
+General invoice (any pay method invoice)
+Product single ladder invoice
+Products group ladder invoice
+Business ladder invoice
 
 ########## Authuenticated url's end ##########
 
@@ -1741,7 +1745,7 @@ Error:
 ###### url:
 
 ```
-dashboard/notifications/get-unreaded
+/dashboard/notifications/get-unreaded
 ```
 
 ###### method:
@@ -1812,7 +1816,7 @@ Error:
 ###### url:
 
 ```
-dashboard/profile/products
+/dashboard/profile/products
 ```
 
 ###### method:
@@ -1893,7 +1897,7 @@ Error:
 ###### url:
 
 ```
-dashboard/profile
+/dashboard/profile
 ```
 
 ###### method:
@@ -1956,7 +1960,7 @@ Error:
 ###### url:
 
 ```
-dashboard/profile/updateProfileImage
+/dashboard/profile/updateProfileImage
 ```
 
 ###### method:
@@ -2011,7 +2015,7 @@ Error:
 ###### url:
 
 ```
-dashboard/user/check-business
+/dashboard/user/check-business
 ```
 
 ###### method:
@@ -2069,7 +2073,7 @@ Error:
 ###### url:
 
 ```
-dashboard/follow/followers
+/dashboard/follow/followers
 ```
 
 ###### method:
@@ -2144,7 +2148,7 @@ Error:
 ###### url:
 
 ```
-dashboard/follow/followings
+/dashboard/follow/followings
 ```
 
 ###### method:
@@ -2219,7 +2223,7 @@ Error:
 ###### url:
 
 ```
-dashboard/business/products/list
+/dashboard/business/products/list
 ```
 
 ###### method:
@@ -2303,7 +2307,7 @@ Error:
 ###### url:
 
 ```
-dashboard/mark/marks
+/dashboard/mark/marks
 ```
 
 ###### method:
@@ -2359,7 +2363,7 @@ Error:
 ###### url:
 
 ```
-dashboard/follow/follow
+/dashboard/follow/follow
 ```
 
 ###### method:
@@ -2413,7 +2417,7 @@ Error:
 ###### url:
 
 ```
-dashboard/follow/unfollow
+/dashboard/follow/unfollow
 ```
 
 ###### method:
@@ -2467,7 +2471,7 @@ Error:
 ###### url:
 
 ```
-dashboard/mark/product-mark
+/dashboard/mark/product-mark
 ```
 
 ###### method:
@@ -2521,7 +2525,7 @@ Error:
 ###### url:
 
 ```
-dashboard/mark/product-unmark
+/dashboard/mark/product-unmark
 ```
 
 ###### method:
@@ -2575,7 +2579,7 @@ Error:
 ###### url:
 
 ```
-dashboard/mark/business-mark
+/dashboard/mark/business-mark
 ```
 
 ###### method:
@@ -2629,7 +2633,7 @@ Error:
 ###### url:
 
 ```
-dashboard/mark/business-unmark
+/dashboard/mark/business-unmark
 ```
 
 ###### method:
@@ -2683,7 +2687,7 @@ Error:
 ###### url:
 
 ```
-dashboard/user/wallet-credit
+/dashboard/user/wallet-credit
 ```
 
 ###### method:
@@ -4839,6 +4843,303 @@ Successfuly:
 Error:
 {
     status: (206/401/403/404/500)
+    error: <string>
+}
+```
+
+### General invoice
+
+###### url:
+
+```
+/dashboard/user/invoices/general
+```
+
+###### method:
+
+**GET**
+
+###### header:
+
+```
+(string) token <required>
+(string) username <required>
+(string) password <required>
+(string) device_token <nullable>
+(string) authorization_token <required>
+```
+
+###### request entries:
+
+```
+(number) method <required> (pay method id)
+```
+
+###### notic:
+
+###### response items:
+
+```
+(number) status
+(string) error
+(array) data
+```
+
+###### response example:
+
+```
+Successfuly:
+{
+    "status": 200,
+    "data": {
+        "calculated_price": {
+            "amount": <number>,
+            "refer_discount": <number>,
+            "festival": <number>,
+            "discount_amount": <number>,
+            "tax": <number>,
+            "final": <number>,
+            "t_f": <number>
+        },
+        "amount": <number>,
+        "tax": <number>,
+        "festival": <number>,
+        "discount_amount": <number>,
+        "refer_discount": <number>,
+        "method_amount": <number>,
+        "precent": <number>,
+        "ref_dis": <number>,
+        "can_pay_with_wallet" => <boolean>,
+        "wallet_credit" => <number>,
+        "description" => <string>
+    }
+}
+
+Error:
+{
+    status: (206/400/403/404)
+    error: <string>
+}
+```
+
+### Product single ladder invoice
+
+###### url:
+
+```
+/dashboard/user/invoices/product-single-ladder
+```
+
+###### method:
+
+**GET**
+
+###### header:
+
+```
+(string) token <required>
+(string) username <required>
+(string) password <required>
+(string) device_token <nullable>
+(string) authorization_token <required>
+```
+
+###### request entries:
+
+```
+(number) id <required> (product id)
+(number) business_id <required> (business id)
+```
+
+###### notic:
+
+###### response items:
+
+```
+(number) status
+(string) error
+(array) data
+```
+
+###### response example:
+
+```
+Successfuly:
+{
+    "status": 200,
+    "data": {
+        "calculated_price": {
+            "amount": <number>,
+            "refer_discount": <number>,
+            "festival": <number>,
+            "discount_amount": <number>,
+            "tax": <number>,
+            "final": <number>,
+            "t_f": <number>
+        },
+        "amount": <number>,
+        "tax": <number>,
+        "festival": <number>,
+        "discount_amount": <number>,
+        "refer_discount": <number>,
+        "method_amount": <number>,
+        "precent": <number>,
+        "ref_dis": <number>,
+        "can_pay_with_wallet" => <boolean>,
+        "wallet_credit" => <number>,
+        "description" => <string>
+    }
+}
+
+Error:
+{
+    status: (206/400/403/404)
+    error: <string>
+}
+```
+
+### Products group ladder invoice
+
+###### url:
+
+```
+/dashboard/user/invoices/products-group-ladder
+```
+
+###### method:
+
+**GET**
+
+###### header:
+
+```
+(string) token <required>
+(string) username <required>
+(string) password <required>
+(string) device_token <nullable>
+(string) authorization_token <required>
+```
+
+###### request entries:
+
+```
+none
+```
+
+###### notic:
+
+###### response items:
+
+```
+(number) status
+(string) error
+(array) data
+```
+
+###### response example:
+
+```
+Successfuly:
+{
+    "status": 200,
+    "data": {
+       "amount_per_ladder": <number>,
+        "tax_per_ladder": <number>,
+        "payable": <number>,
+        "amount": <number>,
+        "tax": <number>,
+        "festival": <number>,
+        "discount_amount": <number>,
+        "refer_discount": <number>,
+        "method_amount": <number>,
+        "precent": <number>,
+        "ref_dis": <number>,
+        "can_pay_with_wallet": <boolean>,
+        "wallet_credit": <number>,
+        "description": <string>,
+        "lenght": <number>
+    }
+}
+
+Error:
+{
+    status: (206/400/403/404)
+    error: <string>
+}
+```
+
+### Business ladder invoice
+
+###### url:
+
+```
+/dashboard/user/invoices/business-ladder
+```
+
+###### method:
+
+**GET**
+
+###### header:
+
+```
+(string) token <required>
+(string) username <required>
+(string) password <required>
+(string) device_token <nullable>
+(string) authorization_token <required>
+```
+
+###### request entries:
+
+```
+(number) id <requried> (business id)
+```
+
+###### notic:
+
+###### response items:
+
+```
+(number) status
+(string) error
+(array) data
+```
+
+###### response example:
+
+```
+Successfuly:
+{
+    "status": 200,
+    "data": {
+        "calculated_price": {
+            "amount": <number>,
+            "refer_discount": <number>,
+            "festival": <number>,
+            "discount_amount": <number>,
+            "tax": <number>,
+            "final": <number>,
+            "sum_tax_final": <number>
+        },
+        "payable": <number>,
+        "amount": <number>,
+        "tax": <number>,
+        "festival": <number>,
+        "discount_amount": <number>,
+        "refer_discount": <number>,
+        "method_amount": <number>,
+        "precent": <number>,
+        "ref_dis": <number>,
+        "can_pay_with_wallet": <boolean>,
+        "wallet_credit": <number>,
+        "description": <string>
+    }
+}
+
+Error:
+{
+    status: (206/400/403/404)
     error: <string>
 }
 ```
