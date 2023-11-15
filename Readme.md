@@ -91,6 +91,10 @@ General invoice (any pay method invoice)
 Product single ladder invoice
 Products group ladder invoice
 Business ladder invoice
+General invoice wallet pay
+Product single ladder invoice wallet pay
+Products group ladder invoice wallet pay
+Business ladder invoice wallet pay
 
 ########## Authuenticated url's end ##########
 
@@ -4911,7 +4915,27 @@ Successfuly:
         "ref_dis": <number>,
         "can_pay_with_wallet" => <boolean>,
         "wallet_credit" => <number>,
-        "description" => <string>
+        "description" => <string>,
+        'pay_paths' => {
+            'wallet' => {
+                'path' => <string, nullable>,
+                'parameters' => {
+                    'method' => <number>,
+                }
+            },
+            'zarinpal' => {
+                'path' => <string, nullable>,
+                'parameters' => {
+                    'method' => <number>,
+                },
+            },
+            'payping' => {
+                'path' => <string, nullable>,
+                'parameters' => {
+                    'method' => <number>,
+                },
+            },
+        },
     }
 }
 
@@ -4987,7 +5011,30 @@ Successfuly:
         "ref_dis": <number>,
         "can_pay_with_wallet" => <boolean>,
         "wallet_credit" => <number>,
-        "description" => <string>
+        "description" => <string>,
+        "pay_paths" => {
+            "wallet" => {
+                "path" => <string, nullable>,
+                "parameters" => {
+                    "id" => <number, product id>,
+                    "business_id" => <number, business id>,
+                }
+            },
+            "zarinpal" => {
+                "path" => <string, nullable>,
+                "parameters" => {
+                    "id" => <number, product id>,
+                    "business_id" => <number, business id>,
+                },
+            },
+            "payping" => {
+                "path" => <string, nullable>,
+                "parameters" => {
+                    "id" => <number, product id>,
+                    "business_id" => <number, business id>,
+                },
+            },
+        },
     }
 }
 
@@ -5057,7 +5104,21 @@ Successfuly:
         "can_pay_with_wallet": <boolean>,
         "wallet_credit": <number>,
         "description": <string>,
-        "lenght": <number>
+        "lenght": <number>,
+        "pay_paths" => {
+            "wallet" => {
+                "path" => <string, nullable>,
+                "parameters" => {}
+            },
+            "zarinpal" => {
+                "path" => <string, nullable>,
+                "parameters" => {},
+            },
+            "payping" => {
+                "path" => <string, nullable>,
+                "parameters" => {},
+            },
+        },
     }
 }
 
@@ -5133,13 +5194,256 @@ Successfuly:
         "ref_dis": <number>,
         "can_pay_with_wallet": <boolean>,
         "wallet_credit": <number>,
-        "description": <string>
+        "description": <string>,
+        "pay_paths" => {
+            "wallet" => {
+                "path" => <string, nullable>,
+                "parameters" => {
+                    "id" => <number>
+                }
+            },
+            "zarinpal" => {
+                "path" => <string, nullable>,
+                "parameters" => {
+                    "id" => <number>
+                },
+            },
+            "payping" => {
+                "path" => <string, nullable>,
+                "parameters" => {
+                    "id" => <number>
+                },
+            },
+        },
     }
 }
 
 Error:
 {
     status: (206/400/403/404)
+    error: <string>
+}
+```
+
+### General invoice wallet pay
+
+###### url:
+
+```
+/dashboard/user/invoices/pay/wallet/general
+```
+
+###### method:
+
+**PATCH**
+
+###### header:
+
+```
+(string) token <required>
+(string) username <required>
+(string) password <required>
+(string) device_token <nullable>
+(string) authorization_token <required>
+```
+
+###### request entries:
+
+```
+(number) method <requried> (method id)
+(number) business_id <nullable> (business id)
+(string) discount_code <nullable>
+```
+
+###### notic:
+
+###### response items:
+
+```
+(number) status
+(string) error
+(array) data
+```
+
+###### response example:
+
+```
+Successfuly:
+{
+    "status": 202,
+    "message": [
+        <string>,
+        <string>
+    ]
+}
+
+Error:
+{
+    status: (206/400/403/404/500)
+    error: <string>
+}
+```
+
+### Product single ladder invoice wallet pay
+
+###### url:
+
+```
+/dashboard/user/invoices/pay/wallet/single-ladder
+```
+
+###### method:
+
+**PATCH**
+
+###### header:
+
+```
+(string) token <required>
+(string) username <required>
+(string) password <required>
+(string) device_token <nullable>
+(string) authorization_token <required>
+```
+
+###### request entries:
+
+```
+(number) id <requried> (product id)
+(number) business_id <required> (business id)
+(string) discount_code <nullable>
+```
+
+###### notic:
+
+###### response items:
+
+```
+(number) status
+(string) error
+(array) data
+```
+
+###### response example:
+
+```
+Successfuly:
+{
+    "status": 202,
+    "message": <string>
+}
+
+Error:
+{
+    status: (206/400/403/404/500)
+    error: <string>
+}
+```
+
+### Products group ladder invoice wallet pay
+
+###### url:
+
+```
+/dashboard/user/invoices/pay/wallet/group-ladder
+```
+
+###### method:
+
+**PATCH**
+
+###### header:
+
+```
+(string) token <required>
+(string) username <required>
+(string) password <required>
+(string) device_token <nullable>
+(string) authorization_token <required>
+```
+
+###### request entries:
+
+```
+none
+```
+
+###### notic:
+
+###### response items:
+
+```
+(number) status
+(string) error
+(array) data
+```
+
+###### response example:
+
+```
+Successfuly:
+{
+    "status": 202,
+    "message": <string>
+}
+
+Error:
+{
+    status: (206/400/403/404/500)
+    error: <string>
+}
+```
+
+### Business ladder invoice wallet pay
+
+###### url:
+
+```
+/dashboard/user/invoices/pay/wallet/business-ladder
+```
+
+###### method:
+
+**PATCH**
+
+###### header:
+
+```
+(string) token <required>
+(string) username <required>
+(string) password <required>
+(string) device_token <nullable>
+(string) authorization_token <required>
+```
+
+###### request entries:
+
+```
+(number) id <required> (business_id)
+```
+
+###### notic:
+
+###### response items:
+
+```
+(number) status
+(string) error
+(array) data
+```
+
+###### response example:
+
+```
+Successfuly:
+{
+    "status": 202,
+    "message": <string>
+}
+
+Error:
+{
+    status: (206/400/403/404/500)
     error: <string>
 }
 ```
