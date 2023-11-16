@@ -144,6 +144,7 @@ Check user business
 ```
 
 ```
+Check user has add product access
 Get user business products list
 Get dashboard business products list
 Get product
@@ -179,6 +180,9 @@ Story remove
 
 ```
 Check user business
+Get businesses filed list
+Get businesses type list
+Get licenses list
 Get user businesses list
 Get user businesses information
 Store user business
@@ -5680,6 +5684,255 @@ Successfuly:
 Error:
 {
     status: (206/400/403/404/500)
+    error: <string>
+}
+```
+
+### Get businesses filed list
+
+###### url:
+
+```
+/dashboard/business/field-list
+```
+
+###### method:
+
+**GET**
+
+###### header:
+
+```
+(string) token <required>
+(string) username <required>
+(string) password <required>
+(string) device_token <nullable>
+(string) authorization_token <required>
+```
+
+###### request entries:
+
+```
+none
+```
+
+###### notic:
+
+**The response.page is the next page. exam: you sent 1 and responsed 2**
+
+###### response items:
+
+```
+(number) status
+(string) error
+(array) data
+```
+
+###### response example:
+
+```
+Successfuly:
+{
+    status: 200,
+    data: {
+        <string>,
+        <string>,
+        <string>,
+        <string>,
+        <string>,
+        <string>,
+    }
+}
+
+Error:
+{
+    status: (206/400/403/404)
+    error: <string>
+}
+```
+
+### Get businesses type list
+
+###### url:
+
+```
+/dashboard/business/type-list
+```
+
+###### method:
+
+**GET**
+
+###### header:
+
+```
+(string) token <required>
+(string) username <required>
+(string) password <required>
+(string) device_token <nullable>
+(string) authorization_token <required>
+```
+
+###### request entries:
+
+```
+none
+```
+
+###### notic:
+
+**The response.page is the next page. exam: you sent 1 and responsed 2**
+
+###### response items:
+
+```
+(number) status
+(string) error
+(array) data
+```
+
+###### response example:
+
+```
+Successfuly:
+{
+    status: 200,
+    data: {
+        {
+            id: <number>,
+            name: <string>,
+            pname: <string>,
+            person_type: <string> // real person or legall person,
+            knowledge: <boolean>,
+        },
+    }
+}
+
+Error:
+{
+    status: (206/400/403/404)
+    error: <string>
+}
+```
+
+### Get licenses list
+
+###### url:
+
+```
+/dashboard/business/license-list
+```
+
+###### method:
+
+**GET**
+
+###### header:
+
+```
+(string) token <required>
+(string) username <required>
+(string) password <required>
+(string) device_token <nullable>
+(string) authorization_token <required>
+```
+
+###### request entries:
+
+```
+none
+```
+
+###### notic:
+
+**The response.page is the next page. exam: you sent 1 and responsed 2**
+
+###### response items:
+
+```
+(number) status
+(string) error
+(array) data
+```
+
+###### response example:
+
+```
+Successfuly:
+{
+    status: 200,
+    data: {
+        {
+            "id": <number>,
+            "name": <string>,
+            "pname": <string>,
+            "nic_name": <string>, // On upload use this key for parameter name
+            "type": <string>,
+            "person_type": <string>,
+            "is_required": <number> (0 or 1)
+        },
+    }
+}
+
+Error:
+{
+    status: (206/400/403/404)
+    error: <string>
+}
+```
+
+### Check user has add product access
+
+###### url:
+
+```
+/dashboard/business/products/add-product-access
+```
+
+###### method:
+
+**GET**
+
+###### header:
+
+```
+(string) token <required>
+(string) username <required>
+(string) password <required>
+(string) device_token <nullable>
+(string) authorization_token <required>
+```
+
+###### request entries:
+
+```
+none
+```
+
+###### notic:
+
+**The response.page is the next page. exam: you sent 1 and responsed 2**
+
+###### response items:
+
+```
+(number) status
+(string) error
+(boolean) has_access
+```
+
+###### response example:
+
+```
+Successfuly:
+{
+    status: 200,
+    has_access: <boolean>
+}
+
+Error:
+{
+    status: (206/400/403/404)
     error: <string>
 }
 ```
