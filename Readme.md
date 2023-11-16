@@ -2,6 +2,89 @@
 
 ## Requests Name
 
+### Guest url's
+
+##### Start and token genrator
+
+```
+App start
+```
+
+##### Upload
+
+```
+File Upload
+```
+
+##### Device localize
+
+```
+Set locale
+```
+
+##### Home page
+
+```
+Get exploer stories list
+Get single story
+Get selected products by category
+Get categories list
+Get products by category
+```
+
+##### Products page
+
+```
+Get products list
+```
+
+##### Product show
+
+```
+Get product
+Get Product tags list
+Product mark ** auth user **
+```
+
+##### Singin / Register
+
+```
+Get roles download file url
+Signin with phone
+Signin with email
+Signin confirmation
+```
+
+##### Search
+
+```
+Content search
+Location search
+```
+
+##### business profile to guest user
+
+```
+Get Business information
+Get Business products
+Start following ** auth user **
+Business mark ** auth user **
+```
+
+##### Location's
+
+```
+Get Countries list
+Get all states list
+Get country states
+Get all cities list
+Get state cities
+```
+
+### Authuenticated url's
+
+## Requests Name
+
 ```
 ########## Guest url's start ##########
 
@@ -95,6 +178,169 @@ General invoice wallet pay
 Product single ladder invoice wallet pay
 Products group ladder invoice wallet pay
 Business ladder invoice wallet pay
+
+########## Authuenticated url's end ##########
+
+```
+
+###### Sign out
+
+```
+Signout
+```
+
+##### Notification
+
+```
+Get user unread notifications
+```
+
+##### Profile
+
+```
+Get profile products
+Get profile information
+Update profile/logo image
+Get website management url
+```
+
+##### Valid business check management
+
+```
+Check user business
+```
+
+##### Followers list management
+
+```
+Get followers
+Unfollow
+```
+
+##### Followings list management
+
+```
+Get followings
+```
+
+##### Marks list(favorite products) management
+
+```
+Get user marks
+Product unmark
+Business unmark
+```
+
+##### wallet management
+
+```
+Get user wallet credit
+```
+
+##### Business products list management
+
+```
+Check user business
+```
+
+```
+Get user business products list
+Get dashboard business products list
+Get product
+Get Product tags list
+Product create
+Product update
+Product remove
+Product single ladder
+Product group ladder store
+product group ladder unpaids information
+```
+
+##### Business product's group ladder management
+
+```
+Get user business products list
+Get dashboard business products list
+Product group ladder store
+product group ladder unpaids information
+Check add story access
+```
+
+##### Business stories management
+
+```
+Get user stories list
+Create story
+Story renew
+Story remove
+```
+
+##### Business management
+
+```
+Check user business
+Get user businesses list
+Get user businesses information
+Store user business
+update user business setting
+Get business addresses list
+Get business address
+Create business address
+Update business address
+Remove business address
+Identity reset start
+Identity reset confirm
+```
+
+##### Business ladder
+
+```
+Business ladder
+Business ladder invoice
+Business ladder invoice wallet pay
+```
+
+##### User invoices
+
+```
+User invoices list
+```
+
+##### User management
+
+```
+Get user information
+User update
+Reset password start
+Reset password confirm
+```
+
+##### Subscriptions page
+
+```
+Get subscription types list
+Get subscription get type
+Get subscription type methods
+Get subscription method
+```
+
+##### Buy subscribtion (invoice)
+
+```
+General invoice (any pay method invoice)
+Product single ladder invoice
+Products group ladder invoice
+Business ladder invoice
+General invoice wallet pay
+Product single ladder invoice wallet pay
+Products group ladder invoice wallet pay
+```
+
+```
+########## Authuenticated url's start ##########
+
+
+
 
 ########## Authuenticated url's end ##########
 
