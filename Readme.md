@@ -83,106 +83,6 @@ Get state cities
 
 ### Authuenticated url's
 
-## Requests Name
-
-```
-########## Guest url's start ##########
-
-Get exploer stories list
-Get single story
-Get selected products by category
-Get categories list
-Get products by category
-File Upload
-Get product
-Get products list
-App start
-Set locale
-Signin with phone
-Signin with email
-Signin confirmation
-Signout
-Location search
-Content search
-Get Business information
-Get Business products
-Get Countries list
-Get all states list
-Get country states
-Get all cities list
-Get state cities
-Get Product tags list
-Get roles download file url
-
-########## Guest url's end ##########
-
-
-
-########## Authuenticated url's start ##########
-
-Get user unread notifications
-Get profile products
-Get profile information
-Update profile/logo image
-Check user business
-Get followers
-Get followings
-Get dashboard business products list
-Get user marks
-Start following
-Unfollow
-Product mark
-Product unmark
-Business mark
-Business unmark
-Get user wallet credit
-Get user business products list
-Get user stories list
-Get user businesses list
-Get user businesses information
-Store user business
-update user business setting
-Get business addresses list
-Get business address
-Create business address
-Update business address
-Remove business address
-Identity reset start
-Identity reset confirm
-Create story
-Story renew
-Story remove
-Business ladder
-User invoices list
-Get user information
-User update
-Reset password start
-Reset password confirm
-Check add story access
-Get subscription types list
-Get subscription get type
-Get subscription type methods
-Get subscription method
-Get website management url
-Product create
-Product update
-Product remove
-Product single ladder
-Product group ladder store
-product group ladder unpaids information
-General invoice (any pay method invoice)
-Product single ladder invoice
-Products group ladder invoice
-Business ladder invoice
-General invoice wallet pay
-Product single ladder invoice wallet pay
-Products group ladder invoice wallet pay
-Business ladder invoice wallet pay
-
-########## Authuenticated url's end ##########
-
-```
-
 ###### Sign out
 
 ```
@@ -336,11 +236,101 @@ Product single ladder invoice wallet pay
 Products group ladder invoice wallet pay
 ```
 
+## Requests Name
+
 ```
+########## Guest url's start ##########
+
+Get exploer stories list
+Get single story
+Get selected products by category
+Get categories list
+Get products by category
+File Upload
+Get product
+Get products list
+App start
+Set locale
+Signin with phone
+Signin with email
+Signin confirmation
+Signout
+Location search
+Content search
+Get Business information
+Get Business products
+Get Countries list
+Get all states list
+Get country states
+Get all cities list
+Get state cities
+Get Product tags list
+Get roles download file url
+
+########## Guest url's end ##########
+
+
+
 ########## Authuenticated url's start ##########
 
-
-
+Get user unread notifications
+Get profile products
+Get profile information
+Update profile/logo image
+Check user business
+Get followers
+Get followings
+Get dashboard business products list
+Get user marks
+Start following
+Unfollow
+Product mark
+Product unmark
+Business mark
+Business unmark
+Get user wallet credit
+Get user business products list
+Get user stories list
+Get user businesses list
+Get user businesses information
+Store user business
+update user business setting
+Get business addresses list
+Get business address
+Create business address
+Update business address
+Remove business address
+Identity reset start
+Identity reset confirm
+Create story
+Story renew
+Story remove
+Business ladder
+User invoices list
+Get user information
+User update
+Reset password start
+Reset password confirm
+Check add story access
+Get subscription types list
+Get subscription get type
+Get subscription type methods
+Get subscription method
+Get website management url
+Product create
+Product update
+Product remove
+Product single ladder
+Product group ladder store
+product group ladder unpaids information
+General invoice (any pay method invoice)
+Product single ladder invoice
+Products group ladder invoice
+Business ladder invoice
+General invoice wallet pay
+Product single ladder invoice wallet pay
+Products group ladder invoice wallet pay
+Business ladder invoice wallet pay
 
 ########## Authuenticated url's end ##########
 
