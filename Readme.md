@@ -347,7 +347,7 @@ Business ladder invoice wallet pay
 ###### url:
 
 ```
-/stories/get-explor-stories
+/story/get-explor-stories
 ```
 
 ###### method:
@@ -409,7 +409,7 @@ Error:
 ###### url:
 
 ```
-/stories/get-story
+/story/get-story
 ```
 
 ###### method:
@@ -610,7 +610,7 @@ Error:
 
 ```
 (number) category_id <required, numeric>
-(number) page <nullable, default: 1>
+(number) page <required, numeric>
 ```
 
 ###### notic:
@@ -664,7 +664,7 @@ Error:
 ###### url:
 
 ```
-/file/upload
+/cilivo-file-manager
 ```
 
 ###### method:
@@ -933,63 +933,6 @@ Successfuly:
 Error:
 {
     status: (206/400/403/404)
-    error: <string>
-}
-```
-
-### App start
-
-###### url:
-
-```
-/app/start
-```
-
-###### method:
-
-**PATCH**
-
-###### header:
-
-```
-(string) token <required>
-(string) username <required>
-(string) password <required>
-(string) device_token <nullable>
-```
-
-###### request entries:
-
-```
-(string) device <nullable>
-(string) ip <nullable>
-(string) country <nullable>
-```
-
-###### notic:
-
-###### response items:
-
-```
-(number) status
-(string) error
-(string) message
-(string) token
-```
-
-###### response example:
-
-```
-Successfuly:
-{
-    status: 201,
-    message: <string>
-    tokenmessage: <string>
-}
-
-Error:
-{
-    status: (206/403/500)
     error: <string>
 }
 ```
@@ -2985,7 +2928,7 @@ Error:
 ###### url:
 
 ```
-/dashboard/business/products
+/dashboard/business/products/list
 ```
 
 ###### method:
@@ -3145,7 +3088,7 @@ Error:
 ###### request entries:
 
 ```
-(number) id <required> (business id)
+(number) page <required>
 ```
 
 ###### notic:
@@ -3474,7 +3417,6 @@ Error:
 ```
 (number) id <required,number> (address id)
 (number) business_id <required,number> (business id)
-(number) page <required,number>
 ```
 
 ###### notic:
@@ -4087,7 +4029,7 @@ Error:
 ###### url:
 
 ```
-/dashboard/user/incoives/list
+/dashboard/user/invoices/list
 ```
 
 ###### method:
@@ -4520,7 +4462,7 @@ Error:
 ###### url:
 
 ```
-/dashboard/saubscriptions/types-all
+/dashboard/saubscriptions/type
 ```
 
 ###### method:
@@ -5936,5 +5878,3 @@ Error:
     error: <string>
 }
 ```
-
-test
