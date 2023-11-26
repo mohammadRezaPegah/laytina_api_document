@@ -5100,18 +5100,22 @@ Successfuly:
         "description" => <string>,
         'pay_paths' => {
             'wallet' => {
-                'path' => <string, nullable>,
+                "method_type" => "GET",
+                'path' => <string>,
                 'parameters' => {
+                    "invoice" => <number>,
                     'method' => <number>,
                 }
             },
             'zarinpal' => {
+                "method_type" => "GET",
                 'path' => <string, nullable>,
                 'parameters' => {
                     'method' => <number>,
                 },
             },
             'payping' => {
+                "method_type" => "GET",
                 'path' => <string, nullable>,
                 'parameters' => {
                     'method' => <number>,
@@ -5196,22 +5200,28 @@ Successfuly:
         "description" => <string>,
         "pay_paths" => {
             "wallet" => {
-                "path" => <string, nullable>,
+                "method_type" => "GET",
+                "path" => <string>,
                 "parameters" => {
+                    "invoice" => <number>,
                     "id" => <number, product id>,
                     "business_id" => <number, business id>,
                 }
             },
             "zarinpal" => {
+                "method_type" => "GET",
                 "path" => <string, nullable>,
                 "parameters" => {
+                    "invoice" => <number>,
                     "id" => <number, product id>,
                     "business_id" => <number, business id>,
                 },
             },
             "payping" => {
+                "method_type" => "GET",
                 "path" => <string, nullable>,
                 "parameters" => {
+                    "invoice" => <number>,
                     "id" => <number, product id>,
                     "business_id" => <number, business id>,
                 },
@@ -5289,16 +5299,25 @@ Successfuly:
         "lenght": <number>,
         "pay_paths" => {
             "wallet" => {
-                "path" => <string, nullable>,
-                "parameters" => {}
+                "method_type" => "GET",
+                "path" => <string>,
+                "parameters" => {
+                    "invoice" => <number>,
+                }
             },
             "zarinpal" => {
+                "method_type" => "GET",
                 "path" => <string, nullable>,
-                "parameters" => {},
+                "parameters" => {
+                    "invoice" => <number>,
+                },
             },
             "payping" => {
+                "method_type" => "GET",
                 "path" => <string, nullable>,
-                "parameters" => {},
+                "parameters" => {
+                    "invoice" => <number>,
+                },
             },
         },
     }
@@ -5379,20 +5398,26 @@ Successfuly:
         "description": <string>,
         "pay_paths" => {
             "wallet" => {
-                "path" => <string, nullable>,
+                "method_type" => "GET",
+                "path" => <string>,
                 "parameters" => {
+                    "invoice" => <number>,
                     "id" => <number>
                 }
             },
             "zarinpal" => {
+                "method_type" => "GET",
                 "path" => <string, nullable>,
                 "parameters" => {
+                    "invoice" => <number>,
                     "id" => <number>
                 },
             },
             "payping" => {
+                "method_type" => "GET",
                 "path" => <string, nullable>,
                 "parameters" => {
+                    "invoice" => <number>,
                     "id" => <number>
                 },
             },
@@ -5417,7 +5442,7 @@ Error:
 
 ###### method:
 
-**PATCH**
+**GET**
 
 ###### header:
 
@@ -5432,6 +5457,7 @@ Error:
 ###### request entries:
 
 ```
+(number) invoice <required> (invoice_id)
 (number) method <requried> (method id)
 (number) business_id <nullable> (business id)
 (string) discount_code <nullable>
@@ -5476,7 +5502,7 @@ Error:
 
 ###### method:
 
-**PATCH**
+**GET**
 
 ###### header:
 
@@ -5491,6 +5517,7 @@ Error:
 ###### request entries:
 
 ```
+(number) invoice <required> (invoice_id)
 (number) id <requried> (product id)
 (number) business_id <required> (business id)
 (string) discount_code <nullable>
@@ -5532,7 +5559,7 @@ Error:
 
 ###### method:
 
-**PATCH**
+**GET**
 
 ###### header:
 
@@ -5547,7 +5574,7 @@ Error:
 ###### request entries:
 
 ```
-none
+(number) invoice <required> (invoice_id)
 ```
 
 ###### notic:
@@ -5586,7 +5613,7 @@ Error:
 
 ###### method:
 
-**PATCH**
+**GET**
 
 ###### header:
 
@@ -5601,6 +5628,7 @@ Error:
 ###### request entries:
 
 ```
+(number) invoice <required> (invoice_id)
 (number) id <required> (business_id)
 ```
 
