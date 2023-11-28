@@ -1998,6 +1998,114 @@ Error:
 }
 ```
 
+### Read all notifications
+
+###### url:
+
+```
+/dashboard/notifications/read-all
+```
+
+###### method:
+
+**PUT**
+
+###### header:
+
+```
+(string) token <required>
+(string) username <required>
+(string) password <required>
+(string) device_token <nullable>
+(string) authorization_token <required>
+```
+
+###### request entries:
+
+```
+none
+```
+
+###### notic:
+
+###### response items:
+
+```
+(number) status
+(string) error
+(array) data
+```
+
+###### response example:
+
+```
+Successfuly:
+{
+    status: 200,
+    message: <string>
+}
+
+Error:
+{
+    status: (206/403/404)
+    error: <string>
+}
+```
+
+### read single notification
+
+###### url:
+
+```
+/dashboard/notifications/read
+```
+
+###### method:
+
+**GET**
+
+###### header:
+
+```
+(string) token <required>
+(string) username <required>
+(string) password <required>
+(string) device_token <nullable>
+(string) authorization_token <required>
+```
+
+###### request entries:
+
+```
+(number) id <required>
+```
+
+###### notic:
+
+###### response items:
+
+```
+(number) status
+(string) error
+(array) data
+```
+
+###### response example:
+
+```
+Successfuly:
+{
+    status: 200,
+    message: <string>
+}
+
+Error:
+{
+    status: (206/403/404)
+    error: <string>
+}
+```
+
 ### Get profile products
 
 ###### url:
@@ -2305,6 +2413,7 @@ Successfuly:
         {
             'is_business' => <boolean>,
             'id' => <number>,
+            'business_id' => <number, nullable>,
             'name' => <string>,
             'slug' => <string>,
             'person_type' => <string>,
@@ -2314,6 +2423,7 @@ Successfuly:
         {
             'is_business' => <boolean>,
             'id' => <number>,
+            'business_id' => <number, nullable>,
             'name' => <string>,
             'slug' => <string>,
             'person_type' => <string>,
@@ -2380,6 +2490,7 @@ Successfuly:
         {
             'is_business' => <boolean>,
             'id' => <number>,
+            'business_id' => <number, nullable>,
             'name' => <string>,
             'slug' => <string>,
             'person_type' => <string>,
@@ -2389,6 +2500,7 @@ Successfuly:
         {
             'is_business' => <boolean>,
             'id' => <number>,
+            'business_id' => <number, nullable>,
             'name' => <string>,
             'slug' => <string>,
             'person_type' => <string>,
@@ -3475,6 +3587,7 @@ Error:
 (number) state <required,number> (state id)
 (number) city <required,number> (city id)
 (string) address <required,string>
+(array) phones <nullable, array>
 ```
 
 ###### notic:
@@ -3534,6 +3647,7 @@ Error:
 (number) state <required,number> (state id)
 (number) city <required,number> (city id)
 (string) address <required,string>
+(array) phones <nullable, array>
 ```
 
 ###### notic:
@@ -5122,6 +5236,99 @@ Successfuly:
                 },
             },
         },
+    }
+}
+
+Error:
+{
+    status: (206/400/403/404)
+    error: <string>
+}
+```
+
+### Wallet charje invoice
+
+###### url:
+
+```
+/dashboard/user/invoices/wallet-caharje
+```
+
+###### method:
+
+**GET**
+
+###### header:
+
+```
+(string) token <required>
+(string) username <required>
+(string) password <required>
+(string) device_token <nullable>
+(string) authorization_token <required>
+```
+
+###### request entries:
+
+```
+(number) amount <required, numeric> // Toomans
+(string) discount_code <nullable>
+```
+
+###### notic:
+
+###### response items:
+
+```
+(number) status
+(string) error
+(array) data
+```
+
+###### response example:
+
+```
+Successfuly:
+{
+    "status": 200,
+    "data": {
+        "payable": <number>,
+        "amount": <string>,
+        "tax": <number>,
+        "festival": <number>,
+        "discount_amount": <number>,
+        "refer_discount": <number>,
+        "method_amount": <string>,
+        "precent": <number>,
+        "ref_dis": <number>,
+        "can_pay_with_wallet": <boolean>,
+        "description": <string>,
+        "pay_paths": {
+            "zarinpal": {
+                "route_method": <string>,
+                "path": <string>,
+                "parameters": {
+                    "gateway": <string>,
+                    "invoice": <number>,
+                    "user": number,
+                    "discount_code": <string, nullable>,
+                    "is_app": <string>,
+                    "is_test": <boolean>
+                }
+            },
+            "payping": {
+                "route_method": <string>,
+                "path": <string>,
+                "parameters": {
+                    "gateway": <string>,
+                    "invoice": <number>,
+                    "user": number,
+                    "discount_code": <string, nullable>,
+                    "is_app": <string>,
+                    "is_test": <boolean>
+                }
+            }
+        }
     }
 }
 
