@@ -457,6 +457,59 @@ Error:
 }
 ```
 
+### Story statistic
+
+###### url:
+
+```
+/story/statistic
+```
+
+###### method:
+
+**GET**
+
+###### header:
+
+```
+(string) token <required>
+(string) username <required>
+(string) password <required>
+(string) device_token <nullable>
+```
+
+###### request entries:
+
+```
+(number) story_id <required, numeric>
+```
+
+###### notic:
+
+###### response items:
+
+```
+(number) status
+(string) error
+(array) message
+```
+
+###### response example:
+
+```
+Successfuly:
+{
+    status: 200,
+    message: <string>
+}
+
+Error:
+{
+    status: (206/403/404)
+    error: <string>
+}
+```
+
 ### Get selected products by category
 
 ###### url:
@@ -1399,19 +1452,46 @@ Error:
 ```
 Successfuly:
 {
-    status: 200,
-    data: [
-       "id": <number>,
-       "user_id": <number>,
+    "status": 200,
+    "data": {
+        "id": <number>,
+        "user_id": <number>,
         "slug": <string>,
-        "logo": <link>,
+        "logo": <string>,
         "name": <string>,
         "activity_issue": <text>,
         "person_type": <string>,
-        "product_len": <number>,
+        "products_len": <number>,
         "followers_len": <number>,
-        "followings_len": <number>
-    ],
+        "followings_len": <number>,
+        "followed": <boolean>,
+        "website_link": <string>,
+        "stories": [
+            {
+                "user_id": <number>,
+                "user_image": <string>,
+                "user_name": <string>,
+                "stories": [
+                    {
+                        "story_id": <numeric>,
+                        "story_image": <string>,
+                        "type": <string>,
+                        "user": <string>,
+                        "business": <string>,
+                        "slug": <string>,
+                        "phone": <string>,
+                        "email": <string>,
+                        "link": <string>,
+                        "show_time": <number>,
+                        "path": <string>,
+                        "logo": <string>
+                    },
+                    {
+                        ...
+                    }
+                ]
+            },
+        ]
 }
 
 Error:
@@ -2008,7 +2088,7 @@ Error:
 
 ###### method:
 
-**PUT**
+**PATCH**
 
 ###### header:
 
@@ -2062,7 +2142,7 @@ Error:
 
 ###### method:
 
-**GET**
+**PATCH**
 
 ###### header:
 
@@ -3094,6 +3174,82 @@ Successfuly:
             'state' => <state/province name>,
             'city' => <city name>,
             'view' => <view length>,
+            'confirmed' => <number(1,0), nullable>
+            'created_at' => <created at data (by user local(jalali/gregorian))>,
+            'author' => <string>,
+            'image' => <image link>
+        }
+    ],
+    page: <number>,
+    has_more: <boolean>
+}
+
+Error:
+{
+    status: (206/400/403/404)
+    error: <string>
+}
+```
+
+### Get user business products list
+
+###### url:
+
+```
+/dashboard/business/products/confirmed
+```
+
+###### method:
+
+**GET**
+
+###### header:
+
+```
+(string) token <required>
+(string) username <required>
+(string) password <required>
+(string) device_token <nullable>
+(string) authorization_token <required>
+```
+
+###### request entries:
+
+```
+(number) id <required> (business id)
+```
+
+###### notic:
+
+**The response.page is the next page. exam: you sent 1 and responsed 2**
+
+###### response items:
+
+```
+(number) status
+(string) error
+(array) data
+(number) page
+(booloean) has_more
+```
+
+###### response example:
+
+```
+Successfuly:
+{
+    status: 200,
+    data: [
+        {
+            'id' => <id>,
+            'name' => <name>,
+            'price' => <price, nullable>,
+            'person_type' => <business person type>,
+            'country' => <country name>,
+            'state' => <state/province name>,
+            'city' => <city name>,
+            'view' => <view length>,
+            'confirmed' => <number(1,0), nullable>
             'created_at' => <created at data (by user local(jalali/gregorian))>,
             'author' => <string>,
             'image' => <image link>
@@ -5034,7 +5190,7 @@ Error:
 ###### url:
 
 ```
-/dashboard/business/products/lagroup-ladder
+/dashboard/business/products/group-ladder
 ```
 
 ###### method:
