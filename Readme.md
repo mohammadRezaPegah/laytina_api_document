@@ -5180,7 +5180,7 @@ Successfuly:
 
 Error:
 {
-    status: (206/401/403/404/500)
+    status: (206/303/401/403/404/500)
     error: <string>
 }
 ```
@@ -5402,12 +5402,12 @@ Error:
 }
 ```
 
-### Wallet charje invoice
+### Wallet add credit invoice
 
 ###### url:
 
 ```
-/dashboard/user/invoices/wallet-caharje
+/dashboard/user/invoices/wallet-add-credit
 ```
 
 ###### method:
@@ -5718,7 +5718,7 @@ Error:
 ###### request entries:
 
 ```
-(number) id <requried> (business id)
+none
 ```
 
 ###### notic:
